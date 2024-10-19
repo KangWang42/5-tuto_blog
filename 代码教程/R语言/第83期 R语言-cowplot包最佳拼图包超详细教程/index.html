@@ -43,8 +43,6 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -3099,54 +3097,54 @@
 <p><strong>第四部分详细功能展示非常详细，有需要的朋友可以先不看，或者找有时间的时候看</strong>。公众号不支持目录跳转，所以导出推文全文为PDF，后台回复“<strong>240329</strong>”获取</p>
 </blockquote>
 <h2 id="cowplot">Cowplot安装</h2>
-<pre><code># 安装CRAN版本
-install.packages(&quot;cowplot&quot;)
-
-
-#安装较新版本 
-remotes::install_github(&quot;wilkelab/cowplot&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># 安装CRAN版本
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>install.packages(&quot;cowplot&quot;)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>#安装较新版本 
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>remotes::install_github(&quot;wilkelab/cowplot&quot;)
+</code></pre></div>
 <h2 id="cowplot_1">Cowplot粗略介绍</h2>
 <p>cowplot包提供了各种功能，帮助创建满足出版质量的图形，<strong>例如一套修改主题、对齐图形和将它们排列成复杂的复合图形的函数，以及简化图形注释和混合图形与image的功能</strong>。</p>
 <h4 id="_1">主题</h4>
 <p>cowplot最初是为了提供一个<strong>简单、干净的主题，类似于 ggplot2 的 theme_classic()</strong>。然而，随着软件包功能的增加，这种选择越来越成问题，因此从 1.0 版开始，cowplot 不再改变默认的 ggplot2 主题。</p>
 <p>重要的是，<strong>cowplot 软件包现在提供了一组具有不同功能的互补主题</strong>。不存在一个适用于所有图形的单一主题，建议绘制每幅图时都明确设置一个主题。</p>
-<pre><code># classic cowplot theme
-ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + 
-  geom_point() +
-  theme_cowplot(12)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a># classic cowplot theme
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + 
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  geom_point() +
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  theme_cowplot(12)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291051514.png" /></p>
 <h3 id="_2">用网格来排版拼接图形</h3>
 <p>cowplot 软件包提供了 plot_grid()函数，用于将绘图排列成网格并贴上标签。</p>
-<pre><code>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
-  geom_point()
-p2 &lt;- ggplot(mtcars, aes(qsec, mpg)) +
-  geom_point()
-
-plot_grid(p1, p2, labels = c('A', 'B'), label_size = 12)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  geom_point()
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>p2 &lt;- ggplot(mtcars, aes(qsec, mpg)) +
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  geom_point()
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>plot_grid(p1, p2, labels = c(&#39;A&#39;, &#39;B&#39;), label_size = 12)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291053884.png" /></p>
 <p>plot_grid() 最初是为 ggplot2 编写的，但它也支持其他绘图框架，<strong>如 base graphics。</strong></p>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291053159.png" /></p>
 <h3 id="_3">添加图形文字或图形标注</h3>
 <p>plot_grid() 建立在通用绘图层之上，它允许我们以图像的形式捕捉绘图，然后在绘图中或绘图之上绘图</p>
-<pre><code>p &lt;- ggplot(mtcars, aes(disp, mpg)) + 
-  geom_point(size = 1.5, color = &quot;blue&quot;) +
-  theme_cowplot(12)
-
-logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
-
-ggdraw(p) + 
-  draw_image(logo_file, x = 1, y = 1, hjust = 1, vjust = 1, width = 0.13, height = 0.2)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>p &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  geom_point(size = 1.5, color = &quot;blue&quot;) +
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  theme_cowplot(12)
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>ggdraw(p) + 
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  draw_image(logo_file, x = 1, y = 1, hjust = 1, vjust = 1, width = 0.13, height = 0.2)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291054276.png" /></p>
 <p>在这里，ggdraw() 会获取绘图的快照，并以全尺寸将其放入一个新的绘图画布中。然后，函数 draw_image() 会在绘图上绘制图像。</p>
 <p>要创建水印，我们可以颠倒顺序，先设置一个空的绘图画布，然后绘制图像，再在上面绘制绘图。</p>
-<pre><code>ggdraw() + 
-  draw_image(logo_file, scale = 0.5) +
-  draw_plot(p)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ggdraw() + 
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  draw_image(logo_file, scale = 0.5) +
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  draw_plot(p)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291055140.png" /></p>
 <h2 id="cowplot_2">Cowplot函数展示</h2>
 <h3 id="_4">图形组合</h3>
@@ -3331,499 +3329,499 @@ ggdraw(p) +
 <h3 id="_9">在网格中拼图</h3>
 <h4 id="_10">基础用法</h4>
 <p>plot_grid() 函数提供了一个简单的界面，用于将图形排列成网格并添加标签。</p>
-<pre><code>library(ggplot2)
-library(cowplot)
-
-p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
-  geom_point()
-p2 &lt;- ggplot(mtcars, aes(qsec, mpg)) +
-  geom_point()
-
-plot_grid(p1, p2, labels = c('A', 'B'))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>library(ggplot2)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>library(cowplot)
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  geom_point()
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>p2 &lt;- ggplot(mtcars, aes(qsec, mpg)) +
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  geom_point()
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>plot_grid(p1, p2, labels = c(&#39;A&#39;, &#39;B&#39;))
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291102694.png" /></p>
 <p>如果指定标签为 labels = "AUTO" 或 labels = "auto"，则标签将分别以大写或小写自动生成。</p>
-<pre><code>plot_grid(p1, p2, labels = &quot;AUTO&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>plot_grid(p1, p2, labels = &quot;AUTO&quot;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291103767.png" /></p>
-<pre><code>plot_grid(p1, p2, labels = &quot;auto&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>plot_grid(p1, p2, labels = &quot;auto&quot;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291103478.png" /></p>
 <p>默认情况下，绘图不会对齐，但在很多情况下，可以通过对齐选项对齐。</p>
-<pre><code>p3 &lt;- p1 + 
-  # use large, rotated axis tick labels to highlight alignment issues
-  theme(axis.text.x = element_text(size = 14, angle = 90, vjust = 0.5))
-
-# plots are drawn without alignment
-plot_grid(p3, p2, labels = &quot;AUTO&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>p3 &lt;- p1 + 
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  # use large, rotated axis tick labels to highlight alignment issues
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  theme(axis.text.x = element_text(size = 14, angle = 90, vjust = 0.5))
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a># plots are drawn without alignment
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>plot_grid(p3, p2, labels = &quot;AUTO&quot;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291103526.png" /></p>
-<pre><code># plots are drawn with horizontal alignment
-plot_grid(p3, p2, labels = &quot;AUTO&quot;, align = &quot;h&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># plots are drawn with horizontal alignment
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>plot_grid(p3, p2, labels = &quot;AUTO&quot;, align = &quot;h&quot;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291104757.png" /></p>
 <p>如果需要更复杂的绘图排列或其他特殊效果，可能需要在对齐参数之外指定轴参数。</p>
 <p>函数 plot_grid() 可以处理各种不同类型的绘图和图形对象，而不仅仅是 ggplot2 绘图。有关详情，请参阅混合使用不同绘图框架的小节。不过，只有 ggplot2 绘图才支持对齐绘图</p>
 <h4 id="_11">微调绘图网格</h4>
 <p>您可以通过 label_size 选项调整标签大小。默认值为 14，因此数值越大标签越大，数值越小标签越小。</p>
-<pre><code>plot_grid(p1, p2, labels = &quot;AUTO&quot;, label_size = 12)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>plot_grid(p1, p2, labels = &quot;AUTO&quot;, label_size = 12)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291105902.png" /></p>
 <p>您还可以调整标签的字体族、字面和颜色。</p>
-<pre><code>plot_grid(
-  p1, p2,
-  labels = &quot;AUTO&quot;, 
-  label_fontfamily = &quot;serif&quot;,
-  label_fontface = &quot;plain&quot;,
-  label_colour = &quot;blue&quot;
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>plot_grid(
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  p1, p2,
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  labels = &quot;AUTO&quot;, 
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  label_fontfamily = &quot;serif&quot;,
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  label_fontface = &quot;plain&quot;,
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  label_colour = &quot;blue&quot;
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291105675.png" /></p>
 <p>标签可以通过 label_x 和 label_y 参数移动，通过 hjust 和 vjust 参数对齐。例如，要将标签置于左下角，可以写入</p>
-<pre><code>plot_grid(
-  p1, p2,
-  labels = &quot;AUTO&quot;,
-  label_size = 12,
-  label_x = 0, label_y = 0,
-  hjust = -0.5, vjust = -0.5
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>plot_grid(
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  p1, p2,
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  labels = &quot;AUTO&quot;,
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  label_size = 12,
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>  label_x = 0, label_y = 0,
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>  hjust = -0.5, vjust = -0.5
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291106137.png" /></p>
 <p>通过向选项 label_x、label_y、hjust 和 vjust 传递调整值向量，可以逐个调整各个标签（示例未显示）。</p>
 <p>可以通过 nrow 和 ncol 指定绘图网格的行数和列数。</p>
-<pre><code># arrange two plots into one column
-plot_grid(
-  p1, p2,
-  labels = &quot;AUTO&quot;, ncol = 1
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a># arrange two plots into one column
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>plot_grid(
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  p1, p2,
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  labels = &quot;AUTO&quot;, ncol = 1
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291106296.png" /></p>
 <p>参数 NULL 可用来表示网格中缺少的图块。请注意，如果开启了自动标注功能，缺失的绘图将被标注。</p>
-<pre><code># the second plot in the first row and the
-# first plot in the second row are missing
-plot_grid(
-  p1, NULL, NULL, p2,
-  labels = &quot;AUTO&quot;, ncol = 2
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a># the second plot in the first row and the
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a># first plot in the second row are missing
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>plot_grid(
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  p1, NULL, NULL, p2,
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>  labels = &quot;AUTO&quot;, ncol = 2
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291107819.png" /></p>
 <p>行和列的相对宽度和高度可以通过 rel_widths 和 rel_heights 参数进行调整。</p>
-<pre><code>plot_grid(p1, p2, labels = &quot;AUTO&quot;, rel_widths = c(1, 2))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>plot_grid(p1, p2, labels = &quot;AUTO&quot;, rel_widths = c(1, 2))
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291107539.png" /></p>
 <h4 id="_12">嵌套绘图网格(拼图后再拼图)</h4>
 <p>如果想生成一种非简单网格的图形排列，可以将一个 plot_grid() 图形插入到另一个图形中。</p>
-<pre><code>bottom_row &lt;- plot_grid(p1, p2, labels = c('B', 'C'), label_size = 12)
-p3 &lt;- ggplot(mtcars, aes(x = qsec, y = disp)) + geom_point() + facet_wrap(~gear)
-
-plot_grid(p3, bottom_row, labels = c('A', ''), label_size = 12, ncol = 1)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>bottom_row &lt;- plot_grid(p1, p2, labels = c(&#39;B&#39;, &#39;C&#39;), label_size = 12)
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>p3 &lt;- ggplot(mtcars, aes(x = qsec, y = disp)) + geom_point() + facet_wrap(~gear)
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>plot_grid(p3, bottom_row, labels = c(&#39;A&#39;, &#39;&#39;), label_size = 12, ncol = 1)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291108137.png" /></p>
 <p>在这种情况下，对齐可能有点麻烦。不过，通常可以通过显式调用 align_plots()来实现。诀窍在于，首先使用 align_plots() 函数沿左坐标轴垂直对齐顶行图（p3）和第一个底行图（p1）。然后将这些对齐的绘图传递给 plot_grid()。</p>
-<pre><code># first align the top-row plot (p3) with the left-most plot of the
-# bottom row (p1)
-plots &lt;- align_plots(p3, p1, align = 'v', axis = 'l')
-# then build the bottom row
-bottom_row &lt;- plot_grid(plots[[2]], p2, labels = c('B', 'C'), label_size = 12)
-
-# then combine with the top row for final plot
-plot_grid(plots[[1]], bottom_row, labels = c('A', ''), label_size = 12, ncol = 1)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a># first align the top-row plot (p3) with the left-most plot of the
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a># bottom row (p1)
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>plots &lt;- align_plots(p3, p1, align = &#39;v&#39;, axis = &#39;l&#39;)
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a># then build the bottom row
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>bottom_row &lt;- plot_grid(plots[[2]], p2, labels = c(&#39;B&#39;, &#39;C&#39;), label_size = 12)
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a># then combine with the top row for final plot
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>plot_grid(plots[[1]], bottom_row, labels = c(&#39;A&#39;, &#39;&#39;), label_size = 12, ncol = 1)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291109202.png" /></p>
 <h4 id="_13">拼图合用标题</h4>
 <p>当我们使用 plot_grid() 组合图形时，可能希望添加一个横跨整个组合图形的标题。虽然 cowplot 中没有特定的函数来实现这种效果，但只需几行代码就能轻松模拟：</p>
-<pre><code># make a plot grid consisting of two panels
-p1 &lt;- ggplot(mtcars, aes(x = disp, y = mpg)) + 
-  geom_point(colour = &quot;blue&quot;) + 
-  theme_half_open(12) + 
-  background_grid(minor = 'none')
-
-p2 &lt;- ggplot(mtcars, aes(x = hp, y = mpg)) + 
-  geom_point(colour = &quot;green&quot;) + 
-  theme_half_open(12) + 
-  background_grid(minor = 'none')
-
-plot_row &lt;- plot_grid(p1, p2)
-
-# now add the title
-title &lt;- ggdraw() + 
-  draw_label(
-    &quot;Miles per gallon decline with displacement and horsepower&quot;,
-    fontface = 'bold',
-    x = 0,
-    hjust = 0
-  ) +
-  theme(
-    # add margin on the left of the drawing canvas,
-    # so title is aligned with left edge of first plot
-    plot.margin = margin(0, 0, 0, 7)
-  )
-plot_grid(
-  title, plot_row,
-  ncol = 1,
-  # rel_heights values control vertical title margins
-  rel_heights = c(0.1, 1)
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a># make a plot grid consisting of two panels
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>p1 &lt;- ggplot(mtcars, aes(x = disp, y = mpg)) + 
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  geom_point(colour = &quot;blue&quot;) + 
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>  theme_half_open(12) + 
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>  background_grid(minor = &#39;none&#39;)
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>p2 &lt;- ggplot(mtcars, aes(x = hp, y = mpg)) + 
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>  geom_point(colour = &quot;green&quot;) + 
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>  theme_half_open(12) + 
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>  background_grid(minor = &#39;none&#39;)
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>plot_row &lt;- plot_grid(p1, p2)
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a># now add the title
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>title &lt;- ggdraw() + 
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>  draw_label(
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>    &quot;Miles per gallon decline with displacement and horsepower&quot;,
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>    fontface = &#39;bold&#39;,
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>    x = 0,
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>    hjust = 0
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>  ) +
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>  theme(
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>    # add margin on the left of the drawing canvas,
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>    # so title is aligned with left edge of first plot
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>    plot.margin = margin(0, 0, 0, 7)
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>  )
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>plot_grid(
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>  title, plot_row,
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>  ncol = 1,
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>  # rel_heights values control vertical title margins
+<a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a>  rel_heights = c(0.1, 1)
+<a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291111341.png" /></p>
 <p>在最后的 plot_grid 行中，需要适当选择 rel_heights 的值，以便标题周围的边距看起来正确。根据此处选择的值，标题占绘图总高度的 9%（即 0.1/1.1）。</p>
 <h4 id="_14">图形合用图例</h4>
 <p>本小节演示如何绘制带有共享图例的复合图。</p>
 <p>我们首先绘制一排不带图例的三幅图。</p>
-<pre><code>library(ggplot2)
-library(cowplot)
-library(rlang)
-
-# down-sampled diamonds data set
-dsamp &lt;- diamonds[sample(nrow(diamonds), 1000), ]
-
-# function to create plots
-plot_diamonds &lt;- function(xaes) {
-  xaes &lt;- enquo(xaes)
-  ggplot(dsamp, aes(!!xaes, price, color = clarity)) +
-    geom_point() +
-    theme_half_open(12) +
-    # we set the left and right margins to 0 to remove 
-    # unnecessary spacing in the final plot arrangement.
-    theme(plot.margin = margin(6, 0, 6, 0))
-}
-
-# make three plots
-p1 &lt;- plot_diamonds(carat)
-p2 &lt;- plot_diamonds(depth) + ylab(NULL)
-p3 &lt;- plot_diamonds(color) + ylab(NULL)
-
-# arrange the three plots in a single row
-prow &lt;- plot_grid(
-  p1 + theme(legend.position=&quot;none&quot;),
-  p2 + theme(legend.position=&quot;none&quot;),
-  p3 + theme(legend.position=&quot;none&quot;),
-  align = 'vh',
-  labels = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;),
-  hjust = -1,
-  nrow = 1
-)
-prow
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>library(ggplot2)
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>library(cowplot)
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>library(rlang)
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a># down-sampled diamonds data set
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>dsamp &lt;- diamonds[sample(nrow(diamonds), 1000), ]
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a># function to create plots
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>plot_diamonds &lt;- function(xaes) {
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>  xaes &lt;- enquo(xaes)
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>  ggplot(dsamp, aes(!!xaes, price, color = clarity)) +
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    geom_point() +
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    theme_half_open(12) +
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    # we set the left and right margins to 0 to remove 
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>    # unnecessary spacing in the final plot arrangement.
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>    theme(plot.margin = margin(6, 0, 6, 0))
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>}
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a># make three plots
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>p1 &lt;- plot_diamonds(carat)
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>p2 &lt;- plot_diamonds(depth) + ylab(NULL)
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>p3 &lt;- plot_diamonds(color) + ylab(NULL)
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a># arrange the three plots in a single row
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>prow &lt;- plot_grid(
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>  p1 + theme(legend.position=&quot;none&quot;),
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>  p2 + theme(legend.position=&quot;none&quot;),
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a>  p3 + theme(legend.position=&quot;none&quot;),
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a>  align = &#39;vh&#39;,
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>  labels = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;),
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a>  hjust = -1,
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a>  nrow = 1
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>)
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a>prow
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291112770.png" /></p>
 <p>现在我们手动添加图例。我们可以将图例放在绘图的一侧。</p>
-<pre><code># extract the legend from one of the plots
-legend &lt;- get_legend(
-  # create some space to the left of the legend
-  p1 + theme(legend.box.margin = margin(0, 0, 0, 12))
-)
-
-# add the legend to the row we made earlier. Give it one-third of 
-# the width of one plot (via rel_widths).
-plot_grid(prow, legend, rel_widths = c(3, .4))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a># extract the legend from one of the plots
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>legend &lt;- get_legend(
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  # create some space to the left of the legend
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>  p1 + theme(legend.box.margin = margin(0, 0, 0, 12))
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>)
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a># add the legend to the row we made earlier. Give it one-third of 
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a># the width of one plot (via rel_widths).
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>plot_grid(prow, legend, rel_widths = c(3, .4))
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291113674.png" /></p>
 <p>我们也可以将图例放在底部。</p>
-<pre><code># extract a legend that is laid out horizontally
-legend_b &lt;- get_legend(
-  p1 + 
-    guides(color = guide_legend(nrow = 1)) +
-    theme(legend.position = &quot;bottom&quot;)
-)
-
-# add the legend underneath the row we made earlier. Give it 10%
-# of the height of one plot (via rel_heights).
-plot_grid(prow, legend_b, ncol = 1, rel_heights = c(1, .1))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a># extract a legend that is laid out horizontally
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>legend_b &lt;- get_legend(
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  p1 + 
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    guides(color = guide_legend(nrow = 1)) +
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    theme(legend.position = &quot;bottom&quot;)
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>)
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a># add the legend underneath the row we made earlier. Give it 10%
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a># of the height of one plot (via rel_heights).
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>plot_grid(prow, legend_b, ncol = 1, rel_heights = c(1, .1))
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291113072.png" /></p>
 <p>或者把图例放中间</p>
-<pre><code># arrange the three plots in a single row, leaving space between plot B and C
-prow &lt;- plot_grid(
-  p1 + theme(legend.position=&quot;none&quot;),
-  p2 + theme(legend.position=&quot;none&quot;),
-  NULL,
-  p3 + theme(legend.position=&quot;none&quot;),
-  align = 'vh',
-  labels = c(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, &quot;C&quot;),
-  hjust = -1,
-  nrow = 1,
-  rel_widths = c(1, 1, .3, 1)
-)
-
-# now add in the legend
-prow + draw_grob(legend, 2/3.3, 0, .3/3.3, 1)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a># arrange the three plots in a single row, leaving space between plot B and C
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>prow &lt;- plot_grid(
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  p1 + theme(legend.position=&quot;none&quot;),
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>  p2 + theme(legend.position=&quot;none&quot;),
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>  NULL,
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>  p3 + theme(legend.position=&quot;none&quot;),
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>  align = &#39;vh&#39;,
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>  labels = c(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, &quot;C&quot;),
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>  hjust = -1,
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>  nrow = 1,
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>  rel_widths = c(1, 1, .3, 1)
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>)
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a># now add in the legend
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>prow + draw_grob(legend, 2/3.3, 0, .3/3.3, 1)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291114290.png" /></p>
 <p>或者来个复杂的排版看看</p>
-<pre><code># plot 1
-p1 &lt;- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + 
-  geom_point() + 
-  stat_smooth(method = &quot;lm&quot;) +
-  facet_grid(. ~ Species) +
-  theme_half_open(12) +
-  background_grid(major = 'y', minor = &quot;none&quot;) + 
-  panel_border() + 
-  theme(legend.position = &quot;none&quot;)
-
-# plot 2
-p2 &lt;- ggplot(iris, aes(Sepal.Length, fill = Species)) +
-  geom_density(alpha = .7) + 
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
-  theme_half_open(12) +
-  theme(legend.justification = &quot;top&quot;)
-p2a &lt;- p2 + theme(legend.position = &quot;none&quot;)
-
-# plot 3
-p3 &lt;- ggplot(iris, aes(Sepal.Width, fill = Species)) +
-  geom_density(alpha = .7) + 
-  scale_y_continuous(expand = c(0, 0)) +
-  theme_half_open(12) +
-  theme(legend.position = &quot;none&quot;)
-
-# legend
-legend &lt;- get_legend(p2)
-
-# align all plots vertically
-plots &lt;- align_plots(p1, p2a, p3, align = 'v', axis = 'l')
-
-# put together the bottom row and then everything
-bottom_row &lt;- plot_grid(
-  plots[[2]], plots[[3]], legend,
-  labels = c(&quot;B&quot;, &quot;C&quot;),
-  rel_widths = c(1, 1, .3),
-  nrow = 1
-)
-plot_grid(plots[[1]], bottom_row, labels = c(&quot;A&quot;), ncol = 1)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a># plot 1
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>p1 &lt;- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + 
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>  geom_point() + 
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>  stat_smooth(method = &quot;lm&quot;) +
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>  facet_grid(. ~ Species) +
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>  theme_half_open(12) +
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>  background_grid(major = &#39;y&#39;, minor = &quot;none&quot;) + 
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>  panel_border() + 
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>  theme(legend.position = &quot;none&quot;)
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a># plot 2
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>p2 &lt;- ggplot(iris, aes(Sepal.Length, fill = Species)) +
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>  geom_density(alpha = .7) + 
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>  theme_half_open(12) +
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>  theme(legend.justification = &quot;top&quot;)
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>p2a &lt;- p2 + theme(legend.position = &quot;none&quot;)
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a># plot 3
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>p3 &lt;- ggplot(iris, aes(Sepal.Width, fill = Species)) +
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>  geom_density(alpha = .7) + 
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>  scale_y_continuous(expand = c(0, 0)) +
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>  theme_half_open(12) +
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>  theme(legend.position = &quot;none&quot;)
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a># legend
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>legend &lt;- get_legend(p2)
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a># align all plots vertically
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>plots &lt;- align_plots(p1, p2a, p3, align = &#39;v&#39;, axis = &#39;l&#39;)
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a># put together the bottom row and then everything
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>bottom_row &lt;- plot_grid(
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>  plots[[2]], plots[[3]], legend,
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>  labels = c(&quot;B&quot;, &quot;C&quot;),
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>  rel_widths = c(1, 1, .3),
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>  nrow = 1
+<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>)
+<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>plot_grid(plots[[1]], bottom_row, labels = c(&quot;A&quot;), ncol = 1)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291115354.png" /></p>
 <h3 id="_15">设置主题</h3>
 <h4 id="_16">基础使用</h4>
 <p>主题 theme_half_open()（或等价主题 theme_cowplot()）提供了一种经典的双轴线、无背景网格的图形外观。该主题适用于大多数类型的图形，但最适合散点图和折线图。</p>
-<pre><code>library(ggplot2)
-library(cowplot)
-
-p &lt;- ggplot(mtcars, aes(disp, mpg)) + geom_point()
-
-p + theme_half_open() # identical to theme_cowplot()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>library(ggplot2)
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>library(cowplot)
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>p &lt;- ggplot(mtcars, aes(disp, mpg)) + geom_point()
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>p + theme_half_open() # identical to theme_cowplot()
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291118304.png" /></p>
 <p>如果您喜欢背景网格，可以通过标准 ggplot2 主题选项添加。或者，也可以使用 cowplot 函数 background_grid()。这个函数需要放在主题调用之后，因为主题调用会覆盖之前所有的主题设置。</p>
-<pre><code>p +
-  theme_half_open() +
-  background_grid() # always place this after the theme
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>p +
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>  theme_half_open() +
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>  background_grid() # always place this after the theme
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291118015.png" /></p>
 <p>如果您喜欢带有网格且不带轴线的极简外观，请使用 theme_minimal_grid()。</p>
-<pre><code>p + theme_minimal_grid()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>p + theme_minimal_grid()
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291119887.png" /></p>
 <p>所有主题都可以进一步自定义。例如，默认字体大小为 14 号，适合 5 到 8 英寸宽的数字。对于较小的数字，您可能需要使用 12 号字体。此外，我们还可以修改 theme_minimal_grid() 中网格线的颜色。</p>
-<pre><code>p +
-  theme_minimal_grid(
-    font_size = 12,
-    color = &quot;grey70&quot;
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>p +
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>  theme_minimal_grid(
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    font_size = 12,
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    color = &quot;grey70&quot;
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>  )
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291119646.png" /></p>
 <h4 id="_17">根据图形类型来选择不同绘图</h4>
 <p>在选择绘图主题时，应始终注意它在特定绘图中的作用。例如，如果您正在绘制条形图，theme_half_open() 会因为 ggplot2 的自动轴扩展（即 x 轴线不在 y = 0 处）而生成难看的浮动条形图。</p>
-<pre><code>p &lt;- ggplot(mtcars, aes(factor(cyl))) +
-  geom_bar(fill = &quot;#56B4E9&quot;, alpha = 0.8) +
-  theme_half_open()
-
-stamp_ugly(p)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>p &lt;- ggplot(mtcars, aes(factor(cyl))) +
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  geom_bar(fill = &quot;#56B4E9&quot;, alpha = 0.8) +
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>  theme_half_open()
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>stamp_ugly(p)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291121779.png" /></p>
 <p>去除条形图低端和x轴的间距是不是好看很多啦</p>
-<pre><code>p &lt;- ggplot(mtcars, aes(factor(cyl))) +
-  geom_bar(fill = &quot;#56B4E9&quot;, alpha = 0.8) +
-  scale_y_continuous(
-    # don't expand y scale at the lower end
-    expand = expansion(mult = c(0, 0.05))
-  )
-
-p + theme_half_open()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>p &lt;- ggplot(mtcars, aes(factor(cyl))) +
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>  geom_bar(fill = &quot;#56B4E9&quot;, alpha = 0.8) +
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>  scale_y_continuous(
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    # don&#39;t expand y scale at the lower end
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    expand = expansion(mult = c(0, 0.05))
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>  )
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>p + theme_half_open()
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291121531.png" /></p>
 <p>条形图在背景网格上看起来也很别扭，我建议不要使用条形图。</p>
-<pre><code>stamp_ugly(
-  p + theme_minimal_grid()
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>stamp_ugly(
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>  p + theme_minimal_grid()
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291124081.png" /></p>
 <p>您可以使用 theme_minimal_hgrid()，它只会绘制水平网格线。</p>
-<pre><code>p + theme_minimal_hgrid()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>p + theme_minimal_hgrid()
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291124386.png" /></p>
 <p>如果使用水平条形图绘制翻转条形图，则可能需要垂直网格线，这可以通过 theme_minimal_vgrid() 获得。</p>
-<pre><code>p +
-  coord_flip() +
-  theme_minimal_vgrid()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>p +
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>  coord_flip() +
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>  theme_minimal_vgrid()
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291125829.png" /></p>
 <h4 id="_18">分面主题</h4>
 <p>在分面时需要特别注意。一个主题可能在单个情节中看起来很好，但在分面情节中却效果不佳。举个例子，看看我们使用 theme_half_open() 进行分面时会发生什么。</p>
-<pre><code>p &lt;- ggplot(mtcars, aes(disp, mpg)) +
-  facet_wrap(~factor(cyl)) +
-  geom_point() +
-  theme_half_open(12)
-
-stamp_ugly(p)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>p &lt;- ggplot(mtcars, aes(disp, mpg)) +
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>  facet_wrap(~factor(cyl)) +
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>  geom_point() +
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>  theme_half_open(12)
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>stamp_ugly(p)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291126270.png" /></p>
 <p>由于 ggplot2 不会重复每个面板的 Y 轴线，因此三个面板在视觉上并没有分开。我们可以通过调用标准 ggplot2 主题或使用便捷函数 panel_border()，在每个面板周围绘制边框，从而改善这种情况。与 background_grid()一样，该函数必须放在主题之后。</p>
-<pre><code>p + panel_border()  # always place this after the theme
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>p + panel_border()  # always place this after the theme
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291126696.png" /></p>
 <p>在这种特殊情况下，也许同时使用面板边框和背景网格是最好的选择。</p>
-<pre><code>p + 
-  panel_border() +
-  background_grid()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>p + 
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>  panel_border() +
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>  background_grid()
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291127733.png" /></p>
 <h4 id="_19">空主题</h4>
 <p>theme_map() 和 theme_nothing() 这两个主题提供了不带坐标轴的精简主题。 theme_map() 类似于 ggplot2 中的 theme_void()，它保留了绘图标题、副标题、标题和图例，只是删除了坐标轴刻度、线条、标签和网格线。所有设置都与其他 cowplot 主题相匹配，因此您可以将使用 theme_map() 的绘图与其他 cowplot 主题混合使用，而且它们看起来会保持一致。</p>
 <p>为了演示这些主题是如何工作的，以及它们是如何与提供的其他主题交互的，让我们先制作一个包含标题、副标题、标题和图例的标准散点图。</p>
-<pre><code>p &lt;- ggplot(mtcars, aes(disp, mpg, color = wt)) +
-  geom_point() +
-  labs(
-    title = &quot;Fuel efficiency in cars&quot;,
-    subtitle = &quot;Bigger and more powerful cars are less efficient&quot;,
-    caption = &quot;Motor Trend, 1974&quot;
-  )
-
-p + theme_cowplot(12)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>p &lt;- ggplot(mtcars, aes(disp, mpg, color = wt)) +
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>  geom_point() +
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>  labs(
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    title = &quot;Fuel efficiency in cars&quot;,
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>    subtitle = &quot;Bigger and more powerful cars are less efficient&quot;,
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>    caption = &quot;Motor Trend, 1974&quot;
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>  )
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>p + theme_cowplot(12)
+</code></pre></div>
 <p>如果使用 theme_map()，同样的图看起来如下。</p>
-<pre><code>p + theme_map(12)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>p + theme_map(12)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291128061.png" /></p>
 <p>请注意，所有被保留的元素在这幅图和上一幅图中看起来都是一样的。</p>
 <p>如果我们使用 theme_nothing() 绘制相同的曲线图，那么除了曲线图面板之外的所有元素都会被移除，包括标题和图例。</p>
-<pre><code>p + theme_nothing()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>p + theme_nothing()
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291129528.png" /></p>
 <p>ggdraw()和 plot_grid() 使用该主题来绘制外围画布。</p>
 <h3 id="_20">图形对齐（控制长宽等可对齐）</h3>
 <p>在R语言中，有几个包可以用来对齐图形。除了cowplot外，<strong>最广泛使用的包括egg和patchwork</strong>。这些包采用了略有不同的方法来对齐图形，各自的方法有不同的优势和劣势。</p>
 <p>虽然egg和patchwork在对齐和排列图形时采用相同的方式，但<strong>cowplot则独立于图形的排列对齐图形。这使得能够先对齐图形，然后再分别重现它们，甚至可以将它们叠加在一起</strong></p>
-<pre><code>library(ggplot2)
-library(cowplot)
-
-p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
-  geom_point()
-p2 &lt;- ggplot(mtcars, aes(disp, hp)) + 
-  geom_point()
-p1
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>library(ggplot2)
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>library(cowplot)
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>  geom_point()
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>p2 &lt;- ggplot(mtcars, aes(disp, hp)) + 
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>  geom_point()
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>p1
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291013337.png" /></p>
-<pre><code>p2
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>p2
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291013116.png" /></p>
 <p>哪怕两个绘图的 x 轴相同，但第一个绘图区域的宽度略大于第二个，因为 y 轴标签的长度不同。在文档中，如果两个绘图相互靠近显示，绘图宽度的这些差异可能会影响美观。我们可以通过垂直对齐两个绘图，然后分别绘制它们来解决这个问题。</p>
-<pre><code>aligned &lt;- align_plots(p1, p2, align = &quot;v&quot;)
-ggdraw(aligned[[1]])
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>aligned &lt;- align_plots(p1, p2, align = &quot;v&quot;)
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>ggdraw(aligned[[1]])
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291017000.png" /></p>
-<pre><code>ggdraw(aligned[[2]])
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>ggdraw(aligned[[2]])
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291017067.png" /></p>
 <p>垂直对齐（align = "v"）是指任何垂直参考线（如左右 y 轴线）在绘图中对齐。相比之下，水平对齐（align = "h"）则是对齐水平参考线。这两种对齐方式可以单独使用（align = "v" 或 align = "h"），也可以组合使用（align = "vh" 或 align = "hv"）。</p>
 <p>如果我们想先对齐再排列图形，可以调用 plot_grid()，并为其提供一个对齐参数。plot_grid() 函数会调用 align_plots() 对齐绘图，然后排列它们。</p>
-<pre><code>plot_grid(p1, p2, ncol = 1, align = &quot;v&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>plot_grid(p1, p2, ncol = 1, align = &quot;v&quot;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291018372.png" /></p>
 <h4 id="_21">按坐标轴对齐</h4>
 <p>上述垂直和水平对齐方式会尝试对齐所有绘图中的每个垂直或水平元素。换句话说，坐标轴标题相互对齐，坐标轴刻度相互对齐，绘图面板相互对齐，等等。这种对齐方法只有在所有绘图具有完全相同的元素时才有效。因此，举例来说，如果我们试图将一个有分面的绘图与一个没有分面(facet)的绘图对齐，这种方法就会失败。</p>
-<pre><code>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
-  geom_point() +
-  theme_minimal_grid(14) + 
-  panel_border(color = &quot;black&quot;)
-
-p2 &lt;- ggplot(mtcars, aes(factor(vs))) + 
-  geom_bar() + 
-  facet_wrap(~am) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-  theme_minimal_hgrid(12) +
-  panel_border(color = &quot;black&quot;) +
-  theme(strip.background = element_rect(fill = &quot;gray80&quot;))
-
-plot_grid(p1, p2, align = &quot;h&quot;, rel_widths = c(1, 1.3))
-##   Warning: Graphs cannot be horizontally aligned unless the axis parameter is
-##  set. Placing graphs unaligned.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>  geom_point() +
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>  theme_minimal_grid(14) + 
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>  panel_border(color = &quot;black&quot;)
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>p2 &lt;- ggplot(mtcars, aes(factor(vs))) + 
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a>  geom_bar() + 
+<a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>  facet_wrap(~am) +
+<a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a>  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+<a id="__codelineno-44-10" name="__codelineno-44-10" href="#__codelineno-44-10"></a>  theme_minimal_hgrid(12) +
+<a id="__codelineno-44-11" name="__codelineno-44-11" href="#__codelineno-44-11"></a>  panel_border(color = &quot;black&quot;) +
+<a id="__codelineno-44-12" name="__codelineno-44-12" href="#__codelineno-44-12"></a>  theme(strip.background = element_rect(fill = &quot;gray80&quot;))
+<a id="__codelineno-44-13" name="__codelineno-44-13" href="#__codelineno-44-13"></a>
+<a id="__codelineno-44-14" name="__codelineno-44-14" href="#__codelineno-44-14"></a>plot_grid(p1, p2, align = &quot;h&quot;, rel_widths = c(1, 1.3))
+<a id="__codelineno-44-15" name="__codelineno-44-15" href="#__codelineno-44-15"></a>##   Warning: Graphs cannot be horizontally aligned unless the axis parameter is
+<a id="__codelineno-44-16" name="__codelineno-44-16" href="#__codelineno-44-16"></a>##  set. Placing graphs unaligned.
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291022519.png" /></p>
 <p>我们会收到无法对齐绘图的警告，因此绘制的绘图没有对齐。要对齐这些曲线图，我们需要告诉 align_plots() 函数曲线图的哪些部分应该对齐。有两种选择，而且都很有意义。首先，我们可以只对齐底轴（axis = "b"）。</p>
-<pre><code>plot_grid(p1, p2, align = &quot;h&quot;, axis = &quot;b&quot;, rel_widths = c(1, 1.3))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>plot_grid(p1, p2, align = &quot;h&quot;, axis = &quot;b&quot;, rel_widths = c(1, 1.3))
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291023129.png" /></p>
 <p>其次，我们可以同时对齐底部和顶部轴线（axis = "bt"）</p>
-<pre><code>plot_grid(p1, p2, align = &quot;h&quot;, axis = &quot;bt&quot;, rel_widths = c(1, 1.3))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>plot_grid(p1, p2, align = &quot;h&quot;, axis = &quot;bt&quot;, rel_widths = c(1, 1.3))
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291024175.png" /></p>
 <p>一般来说，轴参数告诉 align_plots() 函数只对齐特定的轴。它可以理解任意组合的 "t"（顶）、"r"（右）、"b"（底）和 "l"（左）值。</p>
 <p>在第二个例子中，我将展示即使两个绘图包含相同数量的元素，按坐标轴对齐也是非常有用的。请看这两个垂直排列的图，首先显示的是 mpg 数据集中不同类别的汽车数量，其次是每个类别的平均城市 mpg 与该类别汽车数量的散点图。</p>
-<pre><code>library(dplyr)
-library(forcats)
-
-city_mpg &lt;- mpg %&gt;%
-  mutate(class = fct_lump(class, 4, other_level = &quot;other&quot;)) %&gt;%
-  group_by(class) %&gt;%
-  summarize(
-    mean_mpg = mean(cty),
-    count = n()
-  ) %&gt;% mutate(
-    class = fct_reorder(class, count)
-  )
-
-
-p1 &lt;- ggplot(city_mpg, aes(class, count)) + 
-  geom_col() + 
-  ylim(0, 65) + 
-  coord_flip()
-
-p2 &lt;- ggplot(city_mpg, aes(mean_mpg, count)) + 
-  geom_point()
-
-plot_grid(p1, p2, ncol = 1, align = 'v')
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>library(dplyr)
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>library(forcats)
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>city_mpg &lt;- mpg %&gt;%
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>  mutate(class = fct_lump(class, 4, other_level = &quot;other&quot;)) %&gt;%
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>  group_by(class) %&gt;%
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a>  summarize(
+<a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a>    mean_mpg = mean(cty),
+<a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a>    count = n()
+<a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a>  ) %&gt;% mutate(
+<a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a>    class = fct_reorder(class, count)
+<a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a>  )
+<a id="__codelineno-47-13" name="__codelineno-47-13" href="#__codelineno-47-13"></a>
+<a id="__codelineno-47-14" name="__codelineno-47-14" href="#__codelineno-47-14"></a>
+<a id="__codelineno-47-15" name="__codelineno-47-15" href="#__codelineno-47-15"></a>p1 &lt;- ggplot(city_mpg, aes(class, count)) + 
+<a id="__codelineno-47-16" name="__codelineno-47-16" href="#__codelineno-47-16"></a>  geom_col() + 
+<a id="__codelineno-47-17" name="__codelineno-47-17" href="#__codelineno-47-17"></a>  ylim(0, 65) + 
+<a id="__codelineno-47-18" name="__codelineno-47-18" href="#__codelineno-47-18"></a>  coord_flip()
+<a id="__codelineno-47-19" name="__codelineno-47-19" href="#__codelineno-47-19"></a>
+<a id="__codelineno-47-20" name="__codelineno-47-20" href="#__codelineno-47-20"></a>p2 &lt;- ggplot(city_mpg, aes(mean_mpg, count)) + 
+<a id="__codelineno-47-21" name="__codelineno-47-21" href="#__codelineno-47-21"></a>  geom_point()
+<a id="__codelineno-47-22" name="__codelineno-47-22" href="#__codelineno-47-22"></a>
+<a id="__codelineno-47-23" name="__codelineno-47-23" href="#__codelineno-47-23"></a>plot_grid(p1, p2, ncol = 1, align = &#39;v&#39;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291025988.png" /></p>
 <p>由于第一幅图的 y 轴标签很长，因此第二幅图的 y 轴标题与轴标签相距甚远。这看起来很奇怪。最好将坐标轴标题移近标签。我们可以通过按轴对齐来做到这一点。我这里只对齐左轴。对齐左轴和右轴会产生相同的结果。</p>
-<pre><code>plot_grid(p1, p2, ncol = 1, align = 'v', axis = 'l')
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>plot_grid(p1, p2, ncol = 1, align = &#39;v&#39;, axis = &#39;l&#39;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291027731.png" /></p>
 <p>最后，我将分别绘制两幅图，然后将它们叠加在一起。首先，让我们再次绘制 mpg 数据集中不同级别汽车数量的柱状图。</p>
-<pre><code>city_mpg &lt;- city_mpg %&gt;%
-  mutate(class = fct_reorder(class, -mean_mpg))
-
-p1 &lt;- ggplot(city_mpg, aes(class, count)) +
-  geom_col(fill = &quot;#6297E770&quot;) + 
-  scale_y_continuous(
-    expand = expansion(mult = c(0, 0.05)),
-    position = &quot;right&quot;
-  ) +
-  theme_minimal_hgrid(11, rel_small = 1) +
-  theme(
-    panel.grid.major = element_line(color = &quot;#6297E770&quot;),
-    axis.line.x = element_blank(),
-    axis.text.x = element_blank(),
-    axis.title.x = element_blank(),
-    axis.ticks = element_blank(),
-    axis.ticks.length = grid::unit(0, &quot;pt&quot;),
-    axis.text.y = element_text(color = &quot;#6297E7&quot;),
-    axis.title.y = element_text(color = &quot;#6297E7&quot;)
-  )
-p1
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>city_mpg &lt;- city_mpg %&gt;%
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>  mutate(class = fct_reorder(class, -mean_mpg))
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>p1 &lt;- ggplot(city_mpg, aes(class, count)) +
+<a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>  geom_col(fill = &quot;#6297E770&quot;) + 
+<a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>  scale_y_continuous(
+<a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a>    expand = expansion(mult = c(0, 0.05)),
+<a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a>    position = &quot;right&quot;
+<a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a>  ) +
+<a id="__codelineno-49-10" name="__codelineno-49-10" href="#__codelineno-49-10"></a>  theme_minimal_hgrid(11, rel_small = 1) +
+<a id="__codelineno-49-11" name="__codelineno-49-11" href="#__codelineno-49-11"></a>  theme(
+<a id="__codelineno-49-12" name="__codelineno-49-12" href="#__codelineno-49-12"></a>    panel.grid.major = element_line(color = &quot;#6297E770&quot;),
+<a id="__codelineno-49-13" name="__codelineno-49-13" href="#__codelineno-49-13"></a>    axis.line.x = element_blank(),
+<a id="__codelineno-49-14" name="__codelineno-49-14" href="#__codelineno-49-14"></a>    axis.text.x = element_blank(),
+<a id="__codelineno-49-15" name="__codelineno-49-15" href="#__codelineno-49-15"></a>    axis.title.x = element_blank(),
+<a id="__codelineno-49-16" name="__codelineno-49-16" href="#__codelineno-49-16"></a>    axis.ticks = element_blank(),
+<a id="__codelineno-49-17" name="__codelineno-49-17" href="#__codelineno-49-17"></a>    axis.ticks.length = grid::unit(0, &quot;pt&quot;),
+<a id="__codelineno-49-18" name="__codelineno-49-18" href="#__codelineno-49-18"></a>    axis.text.y = element_text(color = &quot;#6297E7&quot;),
+<a id="__codelineno-49-19" name="__codelineno-49-19" href="#__codelineno-49-19"></a>    axis.title.y = element_text(color = &quot;#6297E7&quot;)
+<a id="__codelineno-49-20" name="__codelineno-49-20" href="#__codelineno-49-20"></a>  )
+<a id="__codelineno-49-21" name="__codelineno-49-21" href="#__codelineno-49-21"></a>p1
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291028363.png" /></p>
 <p>现在，让我们用散点图来绘制平均城市英里数与汽车级别的关系。</p>
-<pre><code>p2 &lt;- ggplot(city_mpg, aes(class, mean_mpg)) + 
-  geom_point(size = 3, color = &quot;#D5442D&quot;) + 
-  scale_y_continuous(limits = c(10, 21)) +
-  theme_half_open(11, rel_small = 1) +
-  theme(
-    axis.ticks.y = element_line(color = &quot;#BB2D05&quot;),
-    axis.text.y = element_text(color = &quot;#BB2D05&quot;),
-    axis.title.y = element_text(color = &quot;#BB2D05&quot;),
-    axis.line.y = element_line(color = &quot;#BB2D05&quot;)
-  )
-p2
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>p2 &lt;- ggplot(city_mpg, aes(class, mean_mpg)) + 
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>  geom_point(size = 3, color = &quot;#D5442D&quot;) + 
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>  scale_y_continuous(limits = c(10, 21)) +
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>  theme_half_open(11, rel_small = 1) +
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>  theme(
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>    axis.ticks.y = element_line(color = &quot;#BB2D05&quot;),
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>    axis.text.y = element_text(color = &quot;#BB2D05&quot;),
+<a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>    axis.title.y = element_text(color = &quot;#BB2D05&quot;),
+<a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>    axis.line.y = element_line(color = &quot;#BB2D05&quot;)
+<a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a>  )
+<a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>p2
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291029107.png" /></p>
 <p>现在，我们对齐这两幅图，然后将它们叠加在一起。这样绘制的曲线图具有双轴，通常不鼓励绘制这样的曲线图。我在这里举这个例子只是为了说明，当绘图对齐和绘图放置分开时，我们可以实现哪些类型的效果。</p>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291029182.png" /></p>
@@ -3831,248 +3829,248 @@ p2
 <p>cowplot 软件包提供了一些函数，用于绘图和叠加绘图。通过这些函数，我们可以为图形添加任意注释或背景，将图形置于其他图形内部，以更复杂的布局排列图形，或将来自不同图形系统（ggplot2, grid, lattice, base）的图形组合在一起。该功能建立在 ggplot2 的基础之上，也就是说，生成的图形是 ggplot2 对象，可以像普通 ggplot2 图形一样进行修改、扩展和输出。</p>
 <h4 id="_23">添加背景注释（水印也可以）</h4>
 <p>我们从一些简单的注释开始，例如标签或水印。让我们从 mpg 数据集的基本图开始。</p>
-<pre><code>library(ggplot2)
-library(cowplot)
-
-p &lt;- ggplot(mpg, aes(displ, cty)) +
-  geom_point() +
-  theme_minimal_grid(12)
-
-p
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>library(ggplot2)
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>library(cowplot)
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>p &lt;- ggplot(mpg, aes(displ, cty)) +
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>  geom_point() +
+<a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a>  theme_minimal_grid(12)
+<a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a>
+<a id="__codelineno-51-8" name="__codelineno-51-8" href="#__codelineno-51-8"></a>p
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291035386.png" /></p>
 <p>接下来，我们要给这幅图加上 "draft "的水印。为此，我们通过调用 ggdraw() 将绘图包裹到绘图环境中，然后通过各种 draw_*() 函数添加注释。</p>
-<pre><code>ggdraw(p) + 
-  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>ggdraw(p) + 
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291036610.png" /></p>
 <p><strong>ggdraw(p)的作用是捕捉绘图的快照，使绘图有效地转化为图像，然后将图像绘制到新的 ggplot2 画布中，不显示坐标轴或背景网格</strong>。draw_* 函数只是常规几何图形的包装器。因此，在上面的示例中，我们可以使用 geom_text()，而不是 draw_label()。</p>
-<pre><code>ggdraw(p) + 
-  geom_text(
-    data = data.frame(x = 0.5, y = 0.5, label = &quot;Draft&quot;),
-    aes(x, y, label = label),
-    hjust = 0.5, vjust = 0.5, angle = 45, size = 100/.pt,
-    color = &quot;#C0A0A0&quot;,
-    inherit.aes = FALSE
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>ggdraw(p) + 
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>  geom_text(
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>    data = data.frame(x = 0.5, y = 0.5, label = &quot;Draft&quot;),
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>    aes(x, y, label = label),
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>    hjust = 0.5, vjust = 0.5, angle = 45, size = 100/.pt,
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>    color = &quot;#C0A0A0&quot;,
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a>    inherit.aes = FALSE
+<a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a>  )
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291037101.png" /></p>
 <p>不过，请注意调用 geom_text() 时要啰嗦得多。此外，geom_text() 以毫米为单位解释字体大小，因此如果我们想以更传统的点为单位指定字体大小，就需要除以 .pt。相比之下，draw_label() 会为我们执行这种转换，因此我们可以直接以点为单位指定字体大小。</p>
 <p>由于 ggdraw() 建立在 ggplot2 的基础之上，因此我们可以像处理 ggplot2 图形一样处理它的输出。例如，我们可以使用 theme() 函数来更改背景颜色。</p>
-<pre><code>ggdraw(p) + 
-  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
-  theme(
-    plot.background = element_rect(fill = &quot;cornsilk&quot;, color = NA)
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>ggdraw(p) + 
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>  theme(
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>    plot.background = element_rect(fill = &quot;cornsilk&quot;, color = NA)
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>  )
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291041905.png" /></p>
 <p>我们还可以通过 ggsave() 以标准方式保存注释图。</p>
-<pre><code>draft &lt;- ggdraw(p) + 
-  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45)
-
-ggsave(&quot;draft.pdf&quot;, draft)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>draft &lt;- ggdraw(p) + 
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45)
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>
+<a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>ggsave(&quot;draft.pdf&quot;, draft)
+</code></pre></div>
 <p>(<strong>不过，cowplot 软件包提供了ggsave()的替代函数 save_plot()，可以更方便地保存大小合适的图，</strong>尤其是在制作复合图时）。详情请参见 save_plot() 文档）。</p>
 <p>通常，我们可能希望注释位于绘图下方而不是上方。我们可以先用 ggdraw() 设置一个空图层，然后添加标注，再用 draw_plot() 添加绘图，这样就可以实现这一效果。</p>
-<pre><code>ggdraw() + 
-  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
-  draw_plot(p)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>ggdraw() + 
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>  draw_plot(p)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291042517.png" /></p>
 <p>这就要求绘图具有透明背景，而所有 cowplot 主题都符合这一要求。相比之下，ggplot2 主题则不一定如此。例如，如果我们将情节的主题改为 theme_classic()，底层标签就会被主题的白色背景所隐藏。</p>
-<pre><code>ggdraw() + 
-  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
-  draw_plot(
-    p + theme_classic()
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>ggdraw() + 
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>  draw_plot(
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>    p + theme_classic()
+<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a>  )
+</code></pre></div>
 <p>cowplot 主题 theme_half_open() 没有这种限制。</p>
-<pre><code>ggdraw() + 
-  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
-  draw_plot(
-    p + theme_half_open(12)
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>ggdraw() + 
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>  draw_plot(
+<a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>    p + theme_half_open(12)
+<a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>  )
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291043607.png" /></p>
 <h4 id="_24">嵌入图形</h4>
 <p>Draw_plot() 函数还允许我们在画布上任意位置放置任意大小的绘图。这对于将子图组合成非简单网格的布局非常有用，例如在较大的图形中绘制插入图。</p>
-<pre><code>inset &lt;- ggplot(mpg, aes(drv)) + 
-  geom_bar(fill = &quot;skyblue2&quot;, alpha = 0.7) + 
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
-  theme_minimal_hgrid(11)
-
-ggdraw(p + theme_half_open(12)) +
-  draw_plot(inset, .45, .45, .5, .5) +
-  draw_plot_label(
-    c(&quot;A&quot;, &quot;B&quot;),
-    c(0, 0.45),
-    c(1, 0.95),
-    size = 12
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>inset &lt;- ggplot(mpg, aes(drv)) + 
+<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>  geom_bar(fill = &quot;skyblue2&quot;, alpha = 0.7) + 
+<a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+<a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>  theme_minimal_hgrid(11)
+<a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a>
+<a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a>ggdraw(p + theme_half_open(12)) +
+<a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a>  draw_plot(inset, .45, .45, .5, .5) +
+<a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a>  draw_plot_label(
+<a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a>    c(&quot;A&quot;, &quot;B&quot;),
+<a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a>    c(0, 0.45),
+<a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a>    c(1, 0.95),
+<a id="__codelineno-59-12" name="__codelineno-59-12" href="#__codelineno-59-12"></a>    size = 12
+<a id="__codelineno-59-13" name="__codelineno-59-13" href="#__codelineno-59-13"></a>  )
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291044069.png" /></p>
 <p>该功能不仅限于 ggplot2 绘图。它也适用于基本图形。</p>
-<pre><code>inset &lt;- ~{
-  counts &lt;- table(mpg$drv)
-  par(
-    cex = 0.8,
-    mar = c(3, 3, 1, 1),
-    mgp = c(2, 1, 0)
-  )
-  barplot(counts, xlab = &quot;drv&quot;, ylab = &quot;count&quot;)
-}
-
-ggdraw(p + theme_half_open(12)) +
-  draw_plot(inset, .45, .45, .5, .5) +
-  draw_plot_label(
-    c(&quot;A&quot;, &quot;B&quot;),
-    c(0, 0.45),
-    c(1, 0.95),
-    size = 12
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>inset &lt;- ~{
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>  counts &lt;- table(mpg$drv)
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>  par(
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>    cex = 0.8,
+<a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>    mar = c(3, 3, 1, 1),
+<a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a>    mgp = c(2, 1, 0)
+<a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a>  )
+<a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a>  barplot(counts, xlab = &quot;drv&quot;, ylab = &quot;count&quot;)
+<a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a>}
+<a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a>
+<a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a>ggdraw(p + theme_half_open(12)) +
+<a id="__codelineno-60-12" name="__codelineno-60-12" href="#__codelineno-60-12"></a>  draw_plot(inset, .45, .45, .5, .5) +
+<a id="__codelineno-60-13" name="__codelineno-60-13" href="#__codelineno-60-13"></a>  draw_plot_label(
+<a id="__codelineno-60-14" name="__codelineno-60-14" href="#__codelineno-60-14"></a>    c(&quot;A&quot;, &quot;B&quot;),
+<a id="__codelineno-60-15" name="__codelineno-60-15" href="#__codelineno-60-15"></a>    c(0, 0.45),
+<a id="__codelineno-60-16" name="__codelineno-60-16" href="#__codelineno-60-16"></a>    c(1, 0.95),
+<a id="__codelineno-60-17" name="__codelineno-60-17" href="#__codelineno-60-17"></a>    size = 12
+<a id="__codelineno-60-18" name="__codelineno-60-18" href="#__codelineno-60-18"></a>  )
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291045397.png" /></p>
 <h4 id="_25">绝对定位</h4>
 <p><strong>默认情况下，ggdraw() 使用的坐标系统使用的是 x 和 y 坐标从 0 到 1 的相对坐标</strong>。不过，有时我们需要将图形元素放置在绝对单位上，例如距离左边界正好 1 英寸。我们可以通过绘制_grob()函数支持的网格图形系统来实现。例如，下面的代码会生成一个宽度和高度均为 1 英寸的蓝色正方形，它正好位于绘图区域左侧边框 1 英寸处和顶部边框 1 英寸处。</p>
-<pre><code>library(grid)
-rect &lt;- rectGrob(
-  x = unit(1, &quot;in&quot;),
-  y = unit(1, &quot;npc&quot;) - unit(1, &quot;in&quot;),
-  width = unit(1, &quot;in&quot;),
-  height = unit(1, &quot;in&quot;),
-  hjust = 0, vjust = 1,
-  gp = gpar(fill = &quot;skyblue2&quot;, alpha = 0.5)
-)
-
-ggdraw(p) +
-  draw_grob(rect)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>library(grid)
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>rect &lt;- rectGrob(
+<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>  x = unit(1, &quot;in&quot;),
+<a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>  y = unit(1, &quot;npc&quot;) - unit(1, &quot;in&quot;),
+<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a>  width = unit(1, &quot;in&quot;),
+<a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a>  height = unit(1, &quot;in&quot;),
+<a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a>  hjust = 0, vjust = 1,
+<a id="__codelineno-61-8" name="__codelineno-61-8" href="#__codelineno-61-8"></a>  gp = gpar(fill = &quot;skyblue2&quot;, alpha = 0.5)
+<a id="__codelineno-61-9" name="__codelineno-61-9" href="#__codelineno-61-9"></a>)
+<a id="__codelineno-61-10" name="__codelineno-61-10" href="#__codelineno-61-10"></a>
+<a id="__codelineno-61-11" name="__codelineno-61-11" href="#__codelineno-61-11"></a>ggdraw(p) +
+<a id="__codelineno-61-12" name="__codelineno-61-12" href="#__codelineno-61-12"></a>  draw_grob(rect)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291046082.png" /></p>
 <p>如果我们以不同的尺寸重新生成该图，蓝色方块将保持在相同的绝对位置，并保留其绝对尺寸。</p>
-<pre><code>ggdraw(p) +
-  draw_grob(rect)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>ggdraw(p) +
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>  draw_grob(rect)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291047171.png" /></p>
 <h4 id="plotimage">连接绘图(plot)和图片(image)</h4>
 <p>绘图层还通过函数 draw_image()支持图像。该函数需要安装 magick 软件包，可以获取多种不同格式的图像，并将其与绘图相结合。例如，我们可以使用图像作为绘图背景：</p>
-<pre><code>library(magick)
-library(dplyr)
-library(forcats)
-
-img &lt;- system.file(&quot;extdata&quot;, &quot;cow.jpg&quot;, package = &quot;cowplot&quot;) %&gt;%
-  image_read() %&gt;%
-  image_resize(&quot;570x380&quot;) %&gt;%
-  image_colorize(35, &quot;white&quot;)
-
-p &lt;- PASWR::Cows %&gt;%
-  filter(breed != &quot;Canadian&quot;) %&gt;%
-  mutate(breed = fct_reorder(breed, butterfat)) %&gt;%
-  ggplot(aes(butterfat, fill = breed)) +
-  geom_density(alpha = 0.7) +
-  scale_fill_grey() +
-  coord_cartesian(expand = FALSE) +
-  theme_minimal_hgrid(11, color = &quot;grey30&quot;)
-
-ggdraw() + 
-  draw_image(img) + 
-  draw_plot(p)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>library(magick)
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>library(dplyr)
+<a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>library(forcats)
+<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a>
+<a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a>img &lt;- system.file(&quot;extdata&quot;, &quot;cow.jpg&quot;, package = &quot;cowplot&quot;) %&gt;%
+<a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>  image_read() %&gt;%
+<a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>  image_resize(&quot;570x380&quot;) %&gt;%
+<a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a>  image_colorize(35, &quot;white&quot;)
+<a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a>
+<a id="__codelineno-63-10" name="__codelineno-63-10" href="#__codelineno-63-10"></a>p &lt;- PASWR::Cows %&gt;%
+<a id="__codelineno-63-11" name="__codelineno-63-11" href="#__codelineno-63-11"></a>  filter(breed != &quot;Canadian&quot;) %&gt;%
+<a id="__codelineno-63-12" name="__codelineno-63-12" href="#__codelineno-63-12"></a>  mutate(breed = fct_reorder(breed, butterfat)) %&gt;%
+<a id="__codelineno-63-13" name="__codelineno-63-13" href="#__codelineno-63-13"></a>  ggplot(aes(butterfat, fill = breed)) +
+<a id="__codelineno-63-14" name="__codelineno-63-14" href="#__codelineno-63-14"></a>  geom_density(alpha = 0.7) +
+<a id="__codelineno-63-15" name="__codelineno-63-15" href="#__codelineno-63-15"></a>  scale_fill_grey() +
+<a id="__codelineno-63-16" name="__codelineno-63-16" href="#__codelineno-63-16"></a>  coord_cartesian(expand = FALSE) +
+<a id="__codelineno-63-17" name="__codelineno-63-17" href="#__codelineno-63-17"></a>  theme_minimal_hgrid(11, color = &quot;grey30&quot;)
+<a id="__codelineno-63-18" name="__codelineno-63-18" href="#__codelineno-63-18"></a>
+<a id="__codelineno-63-19" name="__codelineno-63-19" href="#__codelineno-63-19"></a>ggdraw() + 
+<a id="__codelineno-63-20" name="__codelineno-63-20" href="#__codelineno-63-20"></a>  draw_image(img) + 
+<a id="__codelineno-63-21" name="__codelineno-63-21" href="#__codelineno-63-21"></a>  draw_plot(p)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291048102.png" /></p>
 <p>我们还可以将图像作为logo添加到绘图中。除了使用 hjust 和 vjust 外，我们还使用 halign 和 valign 使图像与右上角平齐。</p>
-<pre><code>logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
-
-ggdraw() + 
-  draw_plot(p) +
-  draw_image(
-    logo_file, x = 1, y = 1, hjust = 1, vjust = 1, halign = 1, valign = 1,
-    width = 0.15
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>ggdraw() + 
+<a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a>  draw_plot(p) +
+<a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a>  draw_image(
+<a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a>    logo_file, x = 1, y = 1, hjust = 1, vjust = 1, halign = 1, valign = 1,
+<a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a>    width = 0.15
+<a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a>  )
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291048082.png" /></p>
 <h3 id="ggplot2base">混合不同绘图框架的图(如ggplot2和base)</h3>
 <p>除 ggplot2 对象外，所有将绘图对象作为输入的 cowplot 函数（ggdraw()、draw_plot()、plot_grid()）都可以处理多种不同类型的对象。最重要的是，它们可以处理使用基本 R 图形生成的绘图。不过，只有安装了 gridGraphics 软件包才能使用这一功能。</p>
 <p>作为第一个示例，我们用 ggdraw() 绘制一个基本图形，并用 ggplot2 主题机制设计背景样式</p>
-<pre><code>library(ggplot2)
-library(cowplot)
-
-# define a function that emits the desired plot
-p1 &lt;- function() {
-  par(
-    mar = c(3, 3, 1, 1),
-    mgp = c(2, 1, 0)
-  )
-  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
-}
-
-ggdraw(p1) +
-  theme(plot.background = element_rect(fill = &quot;cornsilk&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>library(ggplot2)
+<a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>library(cowplot)
+<a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>
+<a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a># define a function that emits the desired plot
+<a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a>p1 &lt;- function() {
+<a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a>  par(
+<a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a>    mar = c(3, 3, 1, 1),
+<a id="__codelineno-65-8" name="__codelineno-65-8" href="#__codelineno-65-8"></a>    mgp = c(2, 1, 0)
+<a id="__codelineno-65-9" name="__codelineno-65-9" href="#__codelineno-65-9"></a>  )
+<a id="__codelineno-65-10" name="__codelineno-65-10" href="#__codelineno-65-10"></a>  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+<a id="__codelineno-65-11" name="__codelineno-65-11" href="#__codelineno-65-11"></a>}
+<a id="__codelineno-65-12" name="__codelineno-65-12" href="#__codelineno-65-12"></a>
+<a id="__codelineno-65-13" name="__codelineno-65-13" href="#__codelineno-65-13"></a>ggdraw(p1) +
+<a id="__codelineno-65-14" name="__codelineno-65-14" href="#__codelineno-65-14"></a>  theme(plot.background = element_rect(fill = &quot;cornsilk&quot;))
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291057784.png" /></p>
 <p>添加一个logo</p>
-<pre><code>logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
-
-ggdraw() + 
-  draw_image(
-    logo_file,
-    x = 1, width = 0.1,
-    hjust = 1, halign = 1, valign = 0
-  ) +
-  draw_plot(p1)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
+<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>
+<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>ggdraw() + 
+<a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>  draw_image(
+<a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>    logo_file,
+<a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a>    x = 1, width = 0.1,
+<a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a>    hjust = 1, halign = 1, valign = 0
+<a id="__codelineno-66-8" name="__codelineno-66-8" href="#__codelineno-66-8"></a>  ) +
+<a id="__codelineno-66-9" name="__codelineno-66-9" href="#__codelineno-66-9"></a>  draw_plot(p1)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291058527.png" /></p>
 <p>我们还可以在绘图网格中并排绘制基础图形和 ggplot2 图形。</p>
-<pre><code>p2 &lt;- ggplot(data = mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
-plot_grid(p1, p2)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>p2 &lt;- ggplot(data = mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
+<a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>plot_grid(p1, p2)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291058080.png" /></p>
 <p>R 基本图可以以函数的形式存储，这些函数可以发出所需的图（如上所示），也可以以记录图的形式存储，还可以使用方便的公式界面。</p>
 <p>要创建记录图形，我们首先要绘制基本图形，然后用 recordPlot() 将其记录下来，最后再用 ggdraw() 绘制。</p>
-<pre><code># create base R plot
-par(mar = c(3, 3, 1, 1), mgp = c(2, 1, 0))
-boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a># create base R plot
+<a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a>par(mar = c(3, 3, 1, 1), mgp = c(2, 1, 0))
+<a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291058405.png" /></p>
-<pre><code># record previous base R plot and then draw through ggdraw()
-p1_recorded &lt;- recordPlot()
-ggdraw(p1_recorded)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a># record previous base R plot and then draw through ggdraw()
+<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>p1_recorded &lt;- recordPlot()
+<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>ggdraw(p1_recorded)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291059613.png" /></p>
 <p>我们可以在公式中存储任意复杂的绘图代码，只需将其括入大括号中即可。</p>
-<pre><code># store base R plot as formula
-p1_formula &lt;- ~{
-  par(
-    mar = c(3, 3, 1, 1), 
-    mgp = c(2, 1, 0)
-  )
-  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
-}
-ggdraw(p1_formula)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a># store base R plot as formula
+<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a>p1_formula &lt;- ~{
+<a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>  par(
+<a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a>    mar = c(3, 3, 1, 1), 
+<a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a>    mgp = c(2, 1, 0)
+<a id="__codelineno-70-6" name="__codelineno-70-6" href="#__codelineno-70-6"></a>  )
+<a id="__codelineno-70-7" name="__codelineno-70-7" href="#__codelineno-70-7"></a>  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+<a id="__codelineno-70-8" name="__codelineno-70-8" href="#__codelineno-70-8"></a>}
+<a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a>ggdraw(p1_formula)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291100494.png" /></p>
 <p>同样支持 lattice graphics 和 grid grobs.</p>
-<pre><code># base R
-p1 &lt;- ~{
-  par(
-    mar = c(3, 3, 1, 1), 
-    mgp = c(2, 1, 0)
-  )
-  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
-}
-
-# ggplot2
-p2 &lt;- ggplot(data = mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
-
-# lattice
-library(lattice)
-p3 &lt;- bwplot(~mpg | cyl, data = mtcars)
-
-# elementary grid graphics objects
-library(grid)
-p4 &lt;- circleGrob(r = 0.3, gp = gpar(fill = &quot;skyblue&quot;))
-
-# combine all into one plot
-plot_grid(p1, p2, p3, p4, rel_heights = c(.6, 1), labels = &quot;auto&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a># base R
+<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>p1 &lt;- ~{
+<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>  par(
+<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>    mar = c(3, 3, 1, 1), 
+<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>    mgp = c(2, 1, 0)
+<a id="__codelineno-71-6" name="__codelineno-71-6" href="#__codelineno-71-6"></a>  )
+<a id="__codelineno-71-7" name="__codelineno-71-7" href="#__codelineno-71-7"></a>  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+<a id="__codelineno-71-8" name="__codelineno-71-8" href="#__codelineno-71-8"></a>}
+<a id="__codelineno-71-9" name="__codelineno-71-9" href="#__codelineno-71-9"></a>
+<a id="__codelineno-71-10" name="__codelineno-71-10" href="#__codelineno-71-10"></a># ggplot2
+<a id="__codelineno-71-11" name="__codelineno-71-11" href="#__codelineno-71-11"></a>p2 &lt;- ggplot(data = mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
+<a id="__codelineno-71-12" name="__codelineno-71-12" href="#__codelineno-71-12"></a>
+<a id="__codelineno-71-13" name="__codelineno-71-13" href="#__codelineno-71-13"></a># lattice
+<a id="__codelineno-71-14" name="__codelineno-71-14" href="#__codelineno-71-14"></a>library(lattice)
+<a id="__codelineno-71-15" name="__codelineno-71-15" href="#__codelineno-71-15"></a>p3 &lt;- bwplot(~mpg | cyl, data = mtcars)
+<a id="__codelineno-71-16" name="__codelineno-71-16" href="#__codelineno-71-16"></a>
+<a id="__codelineno-71-17" name="__codelineno-71-17" href="#__codelineno-71-17"></a># elementary grid graphics objects
+<a id="__codelineno-71-18" name="__codelineno-71-18" href="#__codelineno-71-18"></a>library(grid)
+<a id="__codelineno-71-19" name="__codelineno-71-19" href="#__codelineno-71-19"></a>p4 &lt;- circleGrob(r = 0.3, gp = gpar(fill = &quot;skyblue&quot;))
+<a id="__codelineno-71-20" name="__codelineno-71-20" href="#__codelineno-71-20"></a>
+<a id="__codelineno-71-21" name="__codelineno-71-21" href="#__codelineno-71-21"></a># combine all into one plot
+<a id="__codelineno-71-22" name="__codelineno-71-22" href="#__codelineno-71-22"></a>plot_grid(p1, p2, p3, p4, rel_heights = c(.6, 1), labels = &quot;auto&quot;)
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291100531.png" /></p>
 
 

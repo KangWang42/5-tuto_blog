@@ -43,8 +43,6 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2835,31 +2833,30 @@
 <h2 id="_1">基础工作</h2>
 <h3 id="_2">加载数据</h3>
 <p>为了方便效果展示我们先载入数据库进行基础绘图</p>
-<pre><code class="language-r">library(bruceR)
-
-data(iris)
-head(iris, 10)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">bruceR</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">head</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="01 数据" src="https://vip.123pan.cn/1813062489//7%20pic/202410190923556.png" /></p>
 <h3 id="_3">基础可视化</h3>
-<pre><code class="language-r"># ggplot2建立柱状图可视化
-
-ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  labs(title = &quot;Sepal Length by Species&quot;, x = &quot;Species&quot;, y = &quot;Sepal Length&quot;) +
-  theme_minimal()
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ggplot2建立柱状图可视化</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length by Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</code></pre></div>
 <p><img alt="" src="https://vip.123pan.cn/1813062489//7%20pic/202410190931593.png" /></p>
 <h2 id="ggplot2">ggplot2手动调整配色</h2>
 <p>使用函数 scale_*__manualma,一般适用于网上已知的优秀配色,使用吸管工具吸取配色方案并使用</p>
 <p>例如指定新的深色调使用r</p>
-<pre><code class="language-r">ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  labs(title = &quot;Sepal Length by Species&quot;, x = &quot;Species&quot;, y = &quot;Sepal Length&quot;) +
-  theme_minimal()+
-  scale_fill_manual(values = c(&quot;black&quot;, &quot;grey&quot;, &quot;brown&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length by Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;grey&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;brown&quot;</span><span class="p">))</span>
+</code></pre></div>
 <p><img alt="img" src="https://vip.123pan.cn/1813062489//7%20pic/202410190935747.png" /></p>
 <h2 id="rcolorbrew">Rcolorbrew调整配色</h2>
 <h3 id="rcolorbrew_1">Rcolorbrew介绍</h3>
@@ -2870,21 +2867,20 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
 <li>先display配色,查看目标色数和色型</li>
 <li>选择合适的调色盘,在ggplot中使用 <code>scale_*_brewer</code>调用</li>
 </ol>
-<pre><code class="language-r"># 使用RColorBrewer包设置颜色
-library(RColorBrewer)
-
-# 查看配色盘，选择3颜色，区分色
-display.brewer.all(3, type = 'div')
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 使用RColorBrewer包设置颜色</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">RColorBrewer</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 查看配色盘，选择3颜色，区分色</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nf">display.brewer.all</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;div&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="" src="https://vip.123pan.cn/1813062489//7%20pic/202410190941153.png" /></p>
 <p>调用<strong>SpectralRdG</strong>方案</p>
-<pre><code class="language-r">ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  labs(title = &quot;Sepal Length by Species&quot;, x = &quot;Species&quot;, y = &quot;Sepal Length&quot;) +
-  theme_minimal()+
-  scale_fill_brewer(palette = &quot;Spectral&quot;)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length by Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Spectral&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="" src="https://vip.123pan.cn/1813062489//7%20pic/202410190943459.png" /></p>
 <h2 id="ggsci">ggsci调整配色</h2>
 <h3 id="r_1">R包介绍</h3>
@@ -3057,16 +3053,16 @@ display.brewer.all(3, type = 'div')
 <p><img alt="" src="https://vip.123pan.cn/1813062489//7%20pic/202410190948181.png" /></p>
 <h3 id="r_2">R包调用</h3>
 <p>使用柳叶刀配色,其它配色方案自行选择,如实际需要的颜色数n少于调色盘,则会按前n个切片使用</p>
-<pre><code class="language-r"># 使用RColorBrewer包设置颜色
-library(ggsci)
-
-# 柳叶刀配色
-ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  labs(title = &quot;Sepal Length by Species&quot;, x = &quot;Species&quot;, y = &quot;Sepal Length&quot;) +
-  theme_minimal()+
-  scale_fill_lancet()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 使用RColorBrewer包设置颜色</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggsci</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 柳叶刀配色</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length by Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="nf">scale_fill_lancet</span><span class="p">()</span>
+</code></pre></div>
 <p><img alt="" src="https://vip.123pan.cn/1813062489//7%20pic/202410190950421.png" /></p>
 <h2 id="_5">其它配色</h2>
 <h3 id="viridis-colorblind-friendly-color-maps-for-r">viridis: Colorblind-Friendly Color Maps for R</h3>
@@ -3084,21 +3080,21 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
 <p>官方CRAN库:<a href="https://cran.r-project.org/web/packages/MetBrewer/">CRAN: Package MetBrewer (r-project.org)</a></p>
 <p>配色方案参考纽约大都会艺术博物馆,艺术感爆表一起来看看</p>
 <h4 id="_8">使用方案</h4>
-<pre><code class="language-r">library(MetBrewer)
-
-ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  labs(title = &quot;Sepal Length by Species&quot;, x = &quot;Species&quot;, y = &quot;Sepal Length&quot;) +
-  theme_minimal()+
-  scale_fill_manual(values = met.brewer(&quot;Austria&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">MetBrewer</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length by Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">met.brewer</span><span class="p">(</span><span class="s">&quot;Austria&quot;</span><span class="p">))</span>
+</code></pre></div>
 <p><img alt="" src="https://vip.123pan.cn/1813062489//7%20pic/202410190959334.png" /></p>
-<pre><code class="language-r">ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  labs(title = &quot;Sepal Length by Species&quot;, x = &quot;Species&quot;, y = &quot;Sepal Length&quot;) +
-  theme_minimal()+
-  scale_fill_manual(values = met.brewer(&quot;Degas&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length by Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sepal Length&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">met.brewer</span><span class="p">(</span><span class="s">&quot;Degas&quot;</span><span class="p">))</span>
+</code></pre></div>
 <p><img alt="" src="https://vip.123pan.cn/1813062489//7%20pic/202410191013574.png" /></p>
 
 

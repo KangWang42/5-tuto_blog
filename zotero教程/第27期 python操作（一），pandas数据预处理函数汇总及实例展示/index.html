@@ -43,8 +43,6 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -3106,8 +3104,8 @@
 <p>Pandas 可以对各种数据进行运算操作，比如归并、再成形、选择，还有数据清洗和数据加工特征。</p>
 <h2 id="pandas_1">Pandas功能实现</h2>
 <h3 id="_2">模块的安装</h3>
-<pre><code class="language-python">pip install pandas
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+</code></pre></div>
 <h3 id="_3">数据处理基础知识</h3>
 <ul>
 <li>概念<ul>
@@ -3120,283 +3118,227 @@
 </ul>
 <h3 id="_4">数据的读取和写入</h3>
 <h4 id="csv">从CSV读取数据</h4>
-<pre><code class="language-python">import pandas as pd  #模块缩写，后边使用方便
-data=pd.read_csv(&quot;data.csv&quot;)  #调用read_csv函数读取文件，并储存到data变量
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>在读取 CSV 文件时，需要确保文件<strong>存在且可读</strong>。</li>
-<li>CSV 文件中的数据可以是以<strong>逗号分隔</strong>的，也可以使用其他分隔符如制表符等。在读取时，可以根据实际情况设置<strong>分隔符参数 sep</strong> 来解析数据。</li>
-<li>pandas 会将 CSV 文件中的第一行作为<strong>表头（Header）</strong>，如果 CSV 文件没有表头，可以通过设置 header 参数来指定</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1">#模块缩写，后边使用方便</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>  <span class="c1">#调用read_csv函数读取文件，并储存到data变量</span>
+</code></pre></div>
+- 注意事项
+    - 在读取 CSV 文件时，需要确保文件<strong>存在且可读</strong>。
+    - CSV 文件中的数据可以是以<strong>逗号分隔</strong>的，也可以使用其他分隔符如制表符等。在读取时，可以根据实际情况设置<strong>分隔符参数 sep</strong> 来解析数据。
+    - pandas 会将 CSV 文件中的第一行作为<strong>表头（Header）</strong>，如果 CSV 文件没有表头，可以通过设置 header 参数来指定</p>
 <h4 id="excel">从excel文件中读取数据</h4>
-<pre><code class="language-python">import pandas as pd  #模块缩写，后边使用方便
-data=pd.read_excel(&quot;data.xlsx&quot;,sheet_name=&quot;sheet1&quot;)  #调用read_excel函数读取文件，并储存到data变量
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>sheet_name：修改读取的<strong>工作表名</strong></li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1">#模块缩写，后边使用方便</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data.xlsx&quot;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;sheet1&quot;</span><span class="p">)</span>  <span class="c1">#调用read_excel函数读取文件，并储存到data变量</span>
+</code></pre></div>
+- 注意事项
+    - sheet_name：修改读取的<strong>工作表名</strong></p>
 <h4 id="csv_1">数据保存至CSV</h4>
-<pre><code class="language-python">import pandas as pd
-data = {'Name': ['Tom', 'Nick', 'John', 'Cindy'],
-        'Age': [20, 25, 30, 35],
-        'Gender': ['M', 'M', 'M', 'F']}
-# 数据转换为dataframe
-df=pd.DataFrame(data)
-df.to_csv(&quot;data.csv&quot;,index=False)#调用DataFrame类的方法to_csv保存至指定路径
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>上述代码中，首先创建了一个示例数据，包含了姓名、年龄和性别等信息。然后使用 pandas 库将数据转换为 DataFrame 格式。最后使用 DataFrame 的 <strong>to_csv()方法</strong>将数据保存到名为 data.csv 的 CSV 文件中。</li>
-<li>index=False 参数表示不保存<strong>索引值</strong>到 CSV 文件中。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Nick&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Cindy&#39;</span><span class="p">],</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="s1">&#39;Gender&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]}</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># 数据转换为dataframe</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="c1">#调用DataFrame类的方法to_csv保存至指定路径</span>
+</code></pre></div>
+- 注意事项
+    - 上述代码中，首先创建了一个示例数据，包含了姓名、年龄和性别等信息。然后使用 pandas 库将数据转换为 DataFrame 格式。最后使用 DataFrame 的 <strong>to_csv()方法</strong>将数据保存到名为 data.csv 的 CSV 文件中。
+    - index=False 参数表示不保存<strong>索引值</strong>到 CSV 文件中。</p>
 <h4 id="excel_1">将数据保存到 Excel 文件中</h4>
-<pre><code class="language-python">import pandas as pd
-data = {'Name': ['Tom', 'Nick', 'John', 'Cindy'],
-        'Age': [20, 25, 30, 35],
-        'Gender': ['M', 'M', 'M', 'F']}
-# 数据转换为dataframe
-df=pd.DataFrame(data)
-df.to_excel(&quot;data.xlsx&quot;,index=False)#调用DataFrame类的方法to_csv保存至指定路径
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>可以根据实际需求进行修改和扩展。 </li>
-<li>在保存数据时，可以指定保存的文<strong>件名和路径</strong>，只需修改 to_excel() 方法 中的参数。 </li>
-<li>在保存数据时，如果不希望保存<strong>索引列</strong>，则可以将 index 参数设置为 False。 </li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Nick&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Cindy&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="s1">&#39;Gender&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]}</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># 数据转换为dataframe</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;data.xlsx&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="c1">#调用DataFrame类的方法to_csv保存至指定路径</span>
+</code></pre></div>
+- 注意事项
+    - 可以根据实际需求进行修改和扩展。 
+    - 在保存数据时，可以指定保存的文<strong>件名和路径</strong>，只需修改 to_excel() 方法 中的参数。 
+    - 在保存数据时，如果不希望保存<strong>索引列</strong>，则可以将 index 参数设置为 False。 </p>
 <h3 id="_5">数据结构与信息</h3>
 <h4 id="_6">创建对象</h4>
-<pre><code class="language-python"># 创建series对象
-pd.Series([1, 3, 5, np.nan, 6, 8])#包含整数
-pd.Series(['a', 'b', 'c'], index=[1, 2, 3])#包含字符串
-# 可以通过指定索引来自定义 Series 对象的索引，索引可以是任意类型的数 据，如整数、字符串、日期等
-
-#创建一个DataFrame对象
-# 创建一个字典，键为列名，值为列表形式的数据 
-data = {'Name': ['Tom', 'Jerry', 'Spike', 'Tyke'],
-        'Age': [5, 6, 4, 2],
-        'Gender': ['Male', 'Male', 'Male', 'Female']} 
-        # 使用字典创建一个DataFrame 对象 
-df = pd.DataFrame(data)
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>series和DataFrame维度上是<strong>一维和多维</strong></li>
-<li>定义上和结构接近于R的vecter和dataframe</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 创建series对象</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="c1">#包含整数</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="c1">#包含字符串</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 可以通过指定索引来自定义 Series 对象的索引，索引可以是任意类型的数 据，如整数、字符串、日期等</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1">#创建一个DataFrame对象</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 创建一个字典，键为列名，值为列表形式的数据 </span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Spike&#39;</span><span class="p">,</span> <span class="s1">&#39;Tyke&#39;</span><span class="p">],</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="s1">&#39;Gender&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">]}</span> 
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="c1"># 使用字典创建一个DataFrame 对象 </span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+- 注意事项
+    - series和DataFrame维度上是<strong>一维和多维</strong>
+    - 定义上和结构接近于R的vecter和dataframe</p>
 <h4 id="_7">查看对象前几行</h4>
-<pre><code class="language-python"># 查看 DataFrame 的前两行 
-print(df.head(2))
-
-# 查看DataFrame 的后几行，默认为5 行 
-last_rows = df.tail(3) # 查看后3 行
-print(last_rows)
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>当我们想要查看 DataFrame 的前几行时，可以使用 <strong>head()</strong> 方法，并指定需 要显示的行数作为参数。</li>
-<li>默认情况下，head() 方法会显示前 5 行数据。</li>
-<li>DataFrame 的行索引是从 0 开始的。 </li>
-<li>在实际使用时，可以根据数据的大小来决定需要显示的行数，以便更好地查看数据。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 查看 DataFrame 的前两行 </span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 查看DataFrame 的后几行，默认为5 行 </span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">last_rows</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 查看后3 行</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">last_rows</span><span class="p">)</span>
+</code></pre></div>
+- 注意事项
+    - 当我们想要查看 DataFrame 的前几行时，可以使用 <strong>head()</strong> 方法，并指定需 要显示的行数作为参数。
+    - 默认情况下，head() 方法会显示前 5 行数据。
+    - DataFrame 的行索引是从 0 开始的。 
+    - 在实际使用时，可以根据数据的大小来决定需要显示的行数，以便更好地查看数据。</p>
 <h4 id="dataframe">查看对象DataFrame的变量名（列名）</h4>
-<pre><code class="language-python">print(df.columns)#调用df的column属性并打印到屏幕
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="c1">#调用df的column属性并打印到屏幕</span>
+</code></pre></div>
 <p>返回的结果是一个index对象</p>
 <h4 id="dataframe_1">查看对象DataFrame的形状（行数列数）</h4>
-<pre><code class="language-python">print(df.shape)#调用df的shape属性并打印到屏幕
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="c1">#调用df的shape属性并打印到屏幕</span>
+</code></pre></div>
 <h4 id="dataframe_2">查看对象（DataFrame）的统计摘要信息</h4>
-<pre><code class="language-python">print(df.describe())#调用df的describe方法并打印到屏幕
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span><span class="c1">#调用df的describe方法并打印到屏幕</span>
+</code></pre></div>
 <h4 id="dataframe_3">查看对象DataFrame的数据类型</h4>
-<pre><code class="language-python"># 查看 DataFrame 的数据类型 
-print(df.dtypes)     #调用df的dtypes属性并打印到屏幕
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 查看 DataFrame 的数据类型 </span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>     <span class="c1">#调用df的dtypes属性并打印到屏幕</span>
+</code></pre></div>
 <h4 id="dataframe_4">查看对象DataFrame中的唯一值</h4>
-<pre><code class="language-python"># 查看DataFrame中的唯一值 
-unique_values = df['A'].unique() 
-# 首选使用[&quot;&quot;]选中列，后使用uniqe（）方法挑选为唯一值
-print(&quot;唯一值：&quot;, unique_values)
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>unique()函数只能用于 <strong>Series 类型</strong>的数据，如果想查看整个 DataFrame中的唯一值，需要对每一列使用unique()方法。</li>
-<li>unique()函数返回的结果是一个<strong>数组</strong>,可以通过索引和切片等方式进行进一步操作。 </li>
-<li>在数据分析和处理中，查看DataFrame中的唯一值可以帮助我们了解数据的 特点和分布情况。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 查看DataFrame中的唯一值 </span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">unique_values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> 
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># 首选使用[&quot;&quot;]选中列，后使用uniqe（）方法挑选为唯一值</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;唯一值：&quot;</span><span class="p">,</span> <span class="n">unique_values</span><span class="p">)</span>
+</code></pre></div>
+- 注意事项
+    - unique()函数只能用于 <strong>Series 类型</strong>的数据，如果想查看整个 DataFrame中的唯一值，需要对每一列使用unique()方法。
+    - unique()函数返回的结果是一个<strong>数组</strong>,可以通过索引和切片等方式进行进一步操作。 
+    - 在数据分析和处理中，查看DataFrame中的唯一值可以帮助我们了解数据的 特点和分布情况。</p>
 <h4 id="dataframe_5">查看对象DataFrame中的缺失值</h4>
-<pre><code class="language-python"># 创建一个包含缺失值的DataFrame 
-data = {'Name': ['Tom', 'Nick', 'John', 'Amy', 'Emily'], 
-        'Age': [20, 25, None, 30, 35], 
-        'Country': ['USA', None, 'Canada', 'UK', 'Australia']} 
-
-df = pd.DataFrame(data) # 查看DataFrame 中的缺失值（NaN） 
-print(df.isnull())
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>使用 <strong>isnull()方法</strong>来查看 DataFrame 中的缺失值情况。</li>
-<li>该函数会返回一个与 df 具有相同维度的 DataFrame，其中的每个元素为<strong>布尔值</strong>，表示该位置是否为缺失值。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 创建一个包含缺失值的DataFrame </span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Nick&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Amy&#39;</span><span class="p">,</span> <span class="s1">&#39;Emily&#39;</span><span class="p">],</span> 
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span> 
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;Australia&#39;</span><span class="p">]}</span> 
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># 查看DataFrame 中的缺失值（NaN） </span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span>
+</code></pre></div>
+- 注意事项
+    - 使用 <strong>isnull()方法</strong>来查看 DataFrame 中的缺失值情况。
+    - 该函数会返回一个与 df 具有相同维度的 DataFrame，其中的每个元素为<strong>布尔值</strong>，表示该位置是否为缺失值。</p>
 <h4 id="dataframe_6">查看对象DataFrame中的重复值</h4>
-<pre><code class="language-python"># 创建一个DataFrame 
-data = {'Name': ['Tom', 'Tom', 'Jerry', 'Jerry', 'Spike'], 
-        'Age': [25, 25, 30, 30, 5], 
-        'City': ['New York', 'New York', 
-        'Los Angeles', 'Los Angeles', ' Texas']} 
-df = pd.DataFrame(data) # 查看DataFrame 中的重复值 
-duplicates = df.duplicated() 
-print(duplicates)
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>使用.<strong>duplicated方法</strong>，返回一个布尔值的series，标记重复情况</li>
-<li>如果需要<strong>查找并保留所有重复数据</strong>，可以使用参数 keep='first'或者 keep=False。 </li>
-<li>如果需要查找并<strong>保留最后一次出现的重复数据</strong>，可以使用参数 keep='last'。</li>
-<li>如果需要查找并<strong>标记所有重复数据</strong>，可以使用参数 keep='False'。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 创建一个DataFrame </span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Spike&#39;</span><span class="p">],</span> 
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>        <span class="s1">&#39;City&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> 
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="s1">&#39;Los Angeles&#39;</span><span class="p">,</span> <span class="s1">&#39;Los Angeles&#39;</span><span class="p">,</span> <span class="s1">&#39; Texas&#39;</span><span class="p">]}</span> 
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># 查看DataFrame 中的重复值 </span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">duplicates</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span> 
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">duplicates</span><span class="p">)</span>
+</code></pre></div>
+- 注意事项
+    - 使用.<strong>duplicated方法</strong>，返回一个布尔值的series，标记重复情况
+    - 如果需要<strong>查找并保留所有重复数据</strong>，可以使用参数 keep='first'或者 keep=False。 
+    - 如果需要查找并<strong>保留最后一次出现的重复数据</strong>，可以使用参数 keep='last'。
+    - 如果需要查找并<strong>标记所有重复数据</strong>，可以使用参数 keep='False'。</p>
 <h3 id="_8">数据的选择与过滤</h3>
 <h4 id="_9">选中列</h4>
-<pre><code class="language-python"># 选择一列
-df[&quot;name&quot;]    #选择对象的name变量列
-
-# 选中多列
-df[[&quot;name1&quot;,&quot;name2&quot;]]     #通过列标签选中对象的多列
-df.iloc[:,[0,2]]          #通过索引值选择多列
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>通过列标签选择多列时，使用双重方括号[['col1', 'col3']]来指定多个列标签。 </li>
-<li>通过索引值选择多列时，在<strong>iloc方法</strong>中使用两个方括号，第一个方括号指定<strong>选取的行范围</strong>，第二个方括号使用列表方式指定多个<strong>列的索引值</strong>。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 选择一列</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>    <span class="c1">#选择对象的name变量列</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># 选中多列</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;name1&quot;</span><span class="p">,</span><span class="s2">&quot;name2&quot;</span><span class="p">]]</span>     <span class="c1">#通过列标签选中对象的多列</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>          <span class="c1">#通过索引值选择多列</span>
+</code></pre></div>
+- 注意事项
+    - 通过列标签选择多列时，使用双重方括号[['col1', 'col3']]来指定多个列标签。 
+    - 通过索引值选择多列时，在<strong>iloc方法</strong>中使用两个方括号，第一个方括号指定<strong>选取的行范围</strong>，第二个方括号使用列表方式指定多个<strong>列的索引值</strong>。</p>
 <h4 id="_10">选中行</h4>
-<pre><code class="language-python"># 选中一行
-row1 = df.loc[2] # 通过索引选择某一行 选择索引为2的行
-row2 = df.loc[df['Age'] &gt; 25] # 通过条件选择一行，只选择Age 大于25 的行
-
-# 选中多行
-df_slice = df[1:4] #使用切片操作符选择连续的行范围
-filtered_df = df[df['Age'] &gt; 25] #使用条件选择连续的行范围
-
-# 使用逻辑运算符进行多条件选择
-filtered_data = df[(df['Age'] &gt; 30) &amp; (df['Salary'] &gt; 6000)]# 选择年龄大于30 且薪水高于6000的数据行
-
-# 过滤DataFrame中的缺失值
-df_dropna = df.dropna()# 删除包含缺失值的行 
-df_dropna_col = df.dropna(axis=1)# 删除包含缺失值的列 
-df_fillna = df.fillna(0)# 填充缺失值 
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>注意事项 <ul>
-<li>删除缺失值会改变 DataFrame 的大小，需要谨慎使用。 </li>
-<li>在填充缺失值时，可以根据需求选择使用不同的填充方式，如使用 0、均值、 众数等。 </li>
-<li>对于大规模的数据集，处理缺失值可能需要较长的时间，需要注意性能问题。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 选中一行</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># 通过索引选择某一行 选择索引为2的行</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">]</span> <span class="c1"># 通过条件选择一行，只选择Age 大于25 的行</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># 选中多行</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">df_slice</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c1">#使用切片操作符选择连续的行范围</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">]</span> <span class="c1">#使用条件选择连续的行范围</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1"># 使用逻辑运算符进行多条件选择</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">filtered_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">6000</span><span class="p">)]</span><span class="c1"># 选择年龄大于30 且薪水高于6000的数据行</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1"># 过滤DataFrame中的缺失值</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="n">df_dropna</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="c1"># 删除包含缺失值的行 </span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="n">df_dropna_col</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1"># 删除包含缺失值的列 </span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="n">df_fillna</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="c1"># 填充缺失值 </span>
+</code></pre></div>
+- 注意事项
+    - 注意事项 
+        - 删除缺失值会改变 DataFrame 的大小，需要谨慎使用。 
+        - 在填充缺失值时，可以根据需求选择使用不同的填充方式，如使用 0、均值、 众数等。 
+        - 对于大规模的数据集，处理缺失值可能需要较长的时间，需要注意性能问题。</p>
 <h3 id="_11">数据编辑与处理</h3>
 <h4 id="_12">添加及删除列</h4>
-<pre><code class="language-python"># 添加列
-data = {'姓名': ['张三', '李四', '王五', '赵六'], 
-        '年龄': [23, 31, 27, 35], 
-        '城市': ['北京', '上海', '广州', '深圳']} 
-df = pd.DataFrame(data)
-df['性别'] = ['男', '男', '女', '男'] # 添加新列'性别'到DataFrame 
-
-#删除列
-df = df.drop('age', axis=1)# 删除DataFrame 中的某一列 
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># 添加列</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;姓名&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span> <span class="s1">&#39;李四&#39;</span><span class="p">,</span> <span class="s1">&#39;王五&#39;</span><span class="p">,</span> <span class="s1">&#39;赵六&#39;</span><span class="p">],</span> 
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        <span class="s1">&#39;年龄&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span> 
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="s1">&#39;城市&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;北京&#39;</span><span class="p">,</span> <span class="s1">&#39;上海&#39;</span><span class="p">,</span> <span class="s1">&#39;广州&#39;</span><span class="p">,</span> <span class="s1">&#39;深圳&#39;</span><span class="p">]}</span> 
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;性别&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;男&#39;</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">,</span> <span class="s1">&#39;女&#39;</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">]</span> <span class="c1"># 添加新列&#39;性别&#39;到DataFrame </span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="c1">#删除列</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1"># 删除DataFrame 中的某一列 </span>
+</code></pre></div>
 <p>使用列标签来引用新列并赋值给它，以添加新列到 DataFrame。</p>
 <p>在删除 DataFrame 中的某一列时，我们可以使用 drop方法，指定要删除的列的标签（这里是'age'）以及 axis=1 表示<strong>删除列</strong>。</p>
 <h4 id="_13">修改列名</h4>
-<pre><code class="language-python"># 使用 rename() 函数修改列名 
-df.rename(columns={'Name': '姓名', 
-                   'Age': '年龄', 
-                   'City': '城市'}, 
-                   inplace=True)
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>rename() 函数可以修改 DataFrame 的列名。要指定要修改的列索引和新的列名，可以使用一个<strong>字典</strong>作为参数。 </li>
-<li>为了在原 DataFrame 上直接修改列名，<strong>需要将 inplace 参数设置为 True</strong>。如果没有设置inplace 参数或将其设置为False，rename() 函数将返回一个修改后的新DataFrame，并保留原 DataFrame的列名。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># 使用 rename() 函数修改列名 </span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;姓名&#39;</span><span class="p">,</span> 
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>                   <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="s1">&#39;年龄&#39;</span><span class="p">,</span> 
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>                   <span class="s1">&#39;City&#39;</span><span class="p">:</span> <span class="s1">&#39;城市&#39;</span><span class="p">},</span> 
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>                   <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+- 注意事项
+    - rename() 函数可以修改 DataFrame 的列名。要指定要修改的列索引和新的列名，可以使用一个<strong>字典</strong>作为参数。 
+    - 为了在原 DataFrame 上直接修改列名，<strong>需要将 inplace 参数设置为 True</strong>。如果没有设置inplace 参数或将其设置为False，rename() 函数将返回一个修改后的新DataFrame，并保留原 DataFrame的列名。</p>
 <h4 id="_14">修改某列数据</h4>
-<pre><code class="language-python"># 修改第二行的数据 
-df.loc[1] = ['Mike', 35, 'Berlin']
-</code></pre>
-<ul>
-<li>注意事项</li>
-<li>通过df.loc[row_index] 可以访问和修改 DataFrame 中特定行的数据，其中row_index 为要修改的行的索引。 </li>
-<li>使用=号赋值给 df.loc[row_index] 可以修改该行的数据。</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># 修改第二行的数据 </span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mike&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;Berlin&#39;</span><span class="p">]</span>
+</code></pre></div>
+- 注意事项
+- 通过df.loc[row_index] 可以访问和修改 DataFrame 中特定行的数据，其中row_index 为要修改的行的索引。 
+- 使用=号赋值给 df.loc[row_index] 可以修改该行的数据。</p>
 <h4 id="_15">数据排序</h4>
-<pre><code class="language-python">df_sorted = df.sort_values('年龄')# 按照年龄列进行升序排序 
-</code></pre>
-<ul>
-<li>注意事项<ul>
-<li>在使用 sort_values()方法进行排序时，需要<strong>传入要排序的列名</strong>作为参数。 </li>
-<li>默认情况下，sort_values()函数按照<strong>升序排序</strong>，如果需要降序排序，可以设置参数<strong>ascending=False</strong>。</li>
-<li>如果需要在<strong>多列的基础上进行排序</strong>，可以传入一个列名列表作为参数，例如 sort_values(['列 1', '列 2'])。 </li>
-<li>如果要对 DataFrame 的索引进行排序，可以使用 sort_index()函数。</li>
-</ul>
-</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;年龄&#39;</span><span class="p">)</span><span class="c1"># 按照年龄列进行升序排序 </span>
+</code></pre></div>
+- 注意事项
+    - 在使用 sort_values()方法进行排序时，需要<strong>传入要排序的列名</strong>作为参数。 
+    - 默认情况下，sort_values()函数按照<strong>升序排序</strong>，如果需要降序排序，可以设置参数<strong>ascending=False</strong>。
+    - 如果需要在<strong>多列的基础上进行排序</strong>，可以传入一个列名列表作为参数，例如 sort_values(['列 1', '列 2'])。 
+    - 如果要对 DataFrame 的索引进行排序，可以使用 sort_index()函数。</p>
 <h4 id="dataframe_7">对 DataFrame 进行列之间的计算</h4>
-<pre><code class="language-python"># 创建一个包含两个列的DataFrame 
-data = {'A': [1, 2, 3, 4, 5], 
-                  'B': [6, 7, 8, 9, 10]} 
-df = pd.DataFrame(data) 
-# 对两列进行计算 
-df['C'] = df['A'] + df['B'] 
-df['D'] = df['A'] - df['B']
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 创建一个包含两个列的DataFrame </span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>                  <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span> 
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># 对两列进行计算 </span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span> 
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
+</code></pre></div>
 <h4 id="dataframe_8">DataFrame 进行重塑与转置</h4>
-<pre><code class="language-python"># 创建示例 
-DataFrame data = {'国家': ['中国', '美国', '日本'], 
-                  '人口': [1400, 330, 130], 
-                  'GDP': [149.2, 21.4, 5.1]} 
-df = pd.DataFrame(data) 
-# 展示原始 DataFrame 
-print(&quot;原始 DataFrame：&quot;) 
-print(df) 
-# 使用 stack 方法进行重塑
-df_stacked = df.stack() 
-# 展示重塑后的 
-DataFrame print(&quot;\n 重塑后的 DataFrame：&quot;) 
-print(df_stacked) 
-# 使用 transpose方法进行转置 
-df_transposed = df.transpose()
-print(&quot;\n 转置后的 DataFrame：&quot;) 
-print(df_transposed)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 创建示例 </span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">DataFrame</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;国家&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;中国&#39;</span><span class="p">,</span> <span class="s1">&#39;美国&#39;</span><span class="p">,</span> <span class="s1">&#39;日本&#39;</span><span class="p">],</span> 
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>                  <span class="s1">&#39;人口&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1400</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">130</span><span class="p">],</span> 
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>                  <span class="s1">&#39;GDP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.2</span><span class="p">,</span> <span class="mf">21.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">]}</span> 
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1"># 展示原始 DataFrame </span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;原始 DataFrame：&quot;</span><span class="p">)</span> 
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> 
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="c1"># 使用 stack 方法进行重塑</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="n">df_stacked</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span> 
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># 展示重塑后的 </span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="n">DataFrame</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 重塑后的 DataFrame：&quot;</span><span class="p">)</span> 
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">df_stacked</span><span class="p">)</span> 
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="c1"># 使用 transpose方法进行转置 </span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="n">df_transposed</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 转置后的 DataFrame：&quot;</span><span class="p">)</span> 
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">df_transposed</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/20231209144401.png" /></p>
 <ul>
 <li>注意事项<ul>
@@ -3407,11 +3349,11 @@ print(df_transposed)
 </li>
 </ul>
 <h4 id="dataframe_9">DataFrame进行分组与聚合操作</h4>
-<pre><code class="language-python"># 对DataFrame 进行分组和聚合操作
-grouped = df.groupby('Name') # 根据Name 列进行分组 
-agg_result = grouped['Age', 'Salary'].mean() 
-# 对分组后的Age 和Salary 列计算均值
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 对DataFrame 进行分组和聚合操作</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Name&#39;</span><span class="p">)</span> <span class="c1"># 根据Name 列进行分组 </span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">agg_result</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># 对分组后的Age 和Salary 列计算均值</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/20231209144611.png" /></p>
 <ul>
 <li>注意事项<ul>

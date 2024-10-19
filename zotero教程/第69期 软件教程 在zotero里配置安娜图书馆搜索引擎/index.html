@@ -43,8 +43,6 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2543,20 +2541,20 @@
 <li>需要<strong>稳定网络</strong><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202401141318262.png" /></li>
 </ul>
 <h2 id="_3">引擎代码</h2>
-<pre><code class="language-json">{
-        &quot;_name&quot;: &quot;Anna Archive title and author&quot;,
-        &quot;_alias&quot;: &quot;Anna Archive&quot;,
-        &quot;_description&quot;: &quot;AnnaArchive Lookup&quot;,
-        &quot;_icon&quot;: &quot;https://lh3.googleusercontent.com/sOX00LxhvUoMVoBEtSGXV9t10d57n4G1Q26wGc2nDmbh2l_elVUti-ULnTsUBnDlNM4_aab70w=s128-h128-e365&quot;,
-        &quot;_hidden&quot;: false,
-        &quot;_urlTemplate&quot;: &quot;https://annas-archive.org/search?q={z:title}+{rft:aufirst?}+{rft:aulast?}&quot;,
-        &quot;_urlParams&quot;: [],
-        &quot;_urlNamespaces&quot;: {
-            &quot;z&quot;: &quot;http://www.zotero.org/namespaces/openSearch#&quot;
-        },
-        &quot;_iconSourceURI&quot;: &quot;https://lh3.googleusercontent.com/sOX00LxhvUoMVoBEtSGXV9t10d57n4G1Q26wGc2nDmbh2l_elVUti-ULnTsUBnDlNM4_aab70w=s128-h128-e365&quot;
-    }
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anna Archive title and author&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;_alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anna Archive&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AnnaArchive Lookup&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://lh3.googleusercontent.com/sOX00LxhvUoMVoBEtSGXV9t10d57n4G1Q26wGc2nDmbh2l_elVUti-ULnTsUBnDlNM4_aab70w=s128-h128-e365&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nt">&quot;_hidden&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="nt">&quot;_urlTemplate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://annas-archive.org/search?q={z:title}+{rft:aufirst?}+{rft:aulast?}&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="nt">&quot;_urlParams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nt">&quot;_urlNamespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.zotero.org/namespaces/openSearch#&quot;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="nt">&quot;_iconSourceURI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://lh3.googleusercontent.com/sOX00LxhvUoMVoBEtSGXV9t10d57n4G1Q26wGc2nDmbh2l_elVUti-ULnTsUBnDlNM4_aab70w=s128-h128-e365&quot;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div>
 <h2 id="_4">使用方法</h2>
 <ul>
 <li>复制代码</li>
