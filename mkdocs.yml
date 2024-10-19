@@ -1,11 +1,13 @@
 site_name: 科研学帮帮
 theme:
   name: material 
-highlightjs: true        # 打开代码高亮
-hljs_style: github       # 代码高亮风格
-hljs_languages:          # 编程语言
-  - python
-  - r
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
 
 extra_css:
   - stylesheets/extra.css

@@ -2958,17 +2958,17 @@
 </ul>
 <h3 id="_7">实例说明</h3>
 <h4 id="_8">加载包</h4>
-<pre><code class="language-R">#install.packages(tidyverse)  第一次使用要安装
-library(tidyverse)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">#install.packages(tidyverse)  第一次使用要安装</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</code></pre></div>
 <h4 id="_9">新建不整洁数据</h4>
 <p>新建数据框记录同学及成绩情况</p>
-<pre><code class="language-R">score_data &lt;- data.frame(
-  observation=c(&quot;王(康)&quot;,&quot;李(卫)&quot;,&quot;张(强)&quot;),
-  公卫_预防医学导论=c(50,60,70),
-  临床_临床概论=c(30,50,60)
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">score_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="n">observation</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;王(康)&quot;</span><span class="p">,</span><span class="s">&quot;李(卫)&quot;</span><span class="p">,</span><span class="s">&quot;张(强)&quot;</span><span class="p">),</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>公卫_预防医学导论<span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="m">60</span><span class="p">,</span><span class="m">70</span><span class="p">),</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>临床_临床概论<span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">30</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">60</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>数据为不整洁数据<ul>
 <li>姓和名作为不同变量可以进行列拆分</li>
@@ -2979,12 +2979,12 @@ library(tidyverse)
 </ul>
 <h4 id="_10">进行数据重塑</h4>
 <p>数据框的宽表变长表</p>
-<pre><code class="language-R">score_data %&gt;% pivot_longer(
-  -observation,
-  names_to = c(&quot;学院&quot;,&quot;学科&quot;),
-  names_sep=&quot;_&quot;
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">score_data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">pivot_longer</span><span class="p">(</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="o">-</span><span class="n">observation</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">names_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;学院&quot;</span><span class="p">,</span><span class="s">&quot;学科&quot;</span><span class="p">),</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">names_sep</span><span class="o">=</span><span class="s">&quot;_&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>函数说明<ul>
 <li><strong><code>score_data %&gt;%</code></strong>: 这里使用了管道操作符<code>%&gt;%</code>，它是<code>dplyr</code>包的特色之一。<code>%&gt;%</code>允许你将左边的结果传递给右边的函数，使代码更易于阅读和编写。在这里，<code>score_data</code>这个数据框被传递给了<code>pivot_longer()</code>函数。</li>
@@ -3007,14 +3007,14 @@ library(tidyverse)
 <h2 id="_12">整洁化函数实例</h2>
 <h3 id="_13">长宽表转换</h3>
 <h4 id="_14">宽表变长表</h4>
-<pre><code class="language-R">pivot_longer(
-        data, 
-        cols, 
-        names_to, 
-        values_to, 
-        values_drop_na, 
-...)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">pivot_longer</span><span class="p">(</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">        </span><span class="n">data</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">cols</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">names_to</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">values_to</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">values_drop_na</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kc">...</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>参数说明<ul>
 <li><strong>data</strong>: 要重塑的数据框 </li>
@@ -3030,35 +3030,34 @@ library(tidyverse)
 </li>
 </ul>
 <p>参考实例</p>
-<pre><code class="language-R">data_score &lt;-data.frame(
-  name=&quot;王康&quot;,
-  score_2018=90,
-  score_2019=30,
-  score_2020=40
-  )
-
-data_score
-
-tidy_data_score &lt;- data_score %&gt;% 
-  pivot_longer(
-    cols=2:4,
-    names_to = c(&quot;其它&quot;,&quot;时间&quot;),
-    values_to = &quot;分数&quot;,
-    names_sep = &quot;_&quot;
-  )
-tidy_data_score
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">data_score</span><span class="w"> </span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">name</span><span class="o">=</span><span class="s">&quot;王康&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="n">score_2018</span><span class="o">=</span><span class="m">90</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="n">score_2019</span><span class="o">=</span><span class="m">30</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="n">score_2020</span><span class="o">=</span><span class="m">40</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">data_score</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">tidy_data_score</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data_score</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nf">pivot_longer</span><span class="p">(</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="n">cols</span><span class="o">=</span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="n">names_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;其它&quot;</span><span class="p">,</span><span class="s">&quot;时间&quot;</span><span class="p">),</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="n">values_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;分数&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="n">names_sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;_&quot;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="n">tidy_data_score</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/20231210213941.png" /></p>
 <h4 id="_15">长表变宽表</h4>
 <p>长表的特点是：表比较长。有时候需要将分类变量的若干水平值，变成变量（列名）。这就是长表变宽表：</p>
 <p>使用<strong>pivot_wider函数</strong></p>
-<pre><code class="language-R">pivot_wider(data, 
-            id_cols, 
-            names_from, 
-            values_from, 
-            values_fill, ...)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">pivot_wider</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">            </span><span class="n">id_cols</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">            </span><span class="n">names_from</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">            </span><span class="n">values_from</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">            </span><span class="n">values_fill</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>参数说明<ul>
 <li>data: 要重塑的数据框 </li>
@@ -3070,22 +3069,22 @@ tidy_data_score
 </li>
 </ul>
 <p>实例说明</p>
-<pre><code class="language-R">tidy_data_score %&gt;% 
-  pivot_wider(
-    names_from = &quot;时间&quot;,
-    values_from = &quot;分数&quot;
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">tidy_data_score</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nf">pivot_wider</span><span class="p">(</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">names_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;时间&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">values_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;分数&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/20231210214624.png" /></p>
 <h3 id="_16">列的拆分与合并</h3>
 <h4 id="_17">列的拆分</h4>
 <p>一列根据分隔符变成多列，但行数不变</p>
 <p>使用seperate函数</p>
-<pre><code class="language-R">separate(data, 
-         col, 
-         into, 
-         sep, ...):
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">separate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">         </span><span class="n">col</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">         </span><span class="n">into</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">         </span><span class="n">sep</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">)</span><span class="o">:</span>
+</code></pre></div>
 <ul>
 <li>参数说明<ul>
 <li>data，数据框，在管道符传递中可忽略</li>
@@ -3096,25 +3095,24 @@ tidy_data_score
 </li>
 </ul>
 <p>实例说明</p>
-<pre><code class="language-R">score_data &lt;- data.frame(
-  observation=c(&quot;王(康)&quot;,&quot;李(卫)&quot;,&quot;张(强)&quot;),
-  公卫_预防医学导论=c(50,60,70),
-  临床_临床概论=c(30,50,60)
-)
-# 使用到了正则表达式，之后会更
-score_data %&gt;% 
-  separate(col=observation,
-           sep = &quot;\\(&quot;,
-           into = c(&quot;姓&quot;,&quot;名&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">score_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="n">observation</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;王(康)&quot;</span><span class="p">,</span><span class="s">&quot;李(卫)&quot;</span><span class="p">,</span><span class="s">&quot;张(强)&quot;</span><span class="p">),</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>公卫_预防医学导论<span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="m">60</span><span class="p">,</span><span class="m">70</span><span class="p">),</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>临床_临床概论<span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">30</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">60</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># 使用到了正则表达式，之后会更</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">score_data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nf">separate</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">observation</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">           </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\\(&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">           </span><span class="n">into</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;姓&quot;</span><span class="p">,</span><span class="s">&quot;名&quot;</span><span class="p">))</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/20231210215537.png" /></p>
 <h4 id="_18">列的合并</h4>
 <p>使用<strong>unite函数</strong></p>
-<pre><code class="language-R">unite(data, 
-      col, 
-      sep, ...)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">unite</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">      </span><span class="n">col</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">      </span><span class="n">sep</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>参数说明<ul>
 <li>seperate的逆操作</li>
@@ -3123,16 +3121,16 @@ score_data %&gt;%
 </li>
 </ul>
 <p>实例</p>
-<pre><code class="language-R">score_data %&gt;% 
-  separate(col=observation,
-           sep = &quot;\\(&quot;,
-           into = c(&quot;姓&quot;,&quot;名&quot;)) %&gt;% 
-              unite(
-                new,
-                姓,
-                名,
-                sep=&quot;(&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">score_data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nf">separate</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">observation</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">           </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\\(&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">           </span><span class="n">into</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;姓&quot;</span><span class="p">,</span><span class="s">&quot;名&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">              </span><span class="nf">unite</span><span class="p">(</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">                </span><span class="n">new</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">                </span>姓<span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">                </span>名<span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">                </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;(&quot;</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>说明<ul>
 <li><strong><code>unite(new, century, year, sep = "")</code></strong>: <code>unite()</code>函数用于将多列合并成一列。在这个例子中，<code>new</code>是合并后新列的名称，<code>century</code>和<code>year</code>是要被合并的两列的名称。</li>
@@ -3147,19 +3145,19 @@ score_data %&gt;%
 <p>使用separate_rows函数对不定长的行进行分行，堆叠放置</p>
 <p>使用与separate接近，<strong>但是是堆叠放置，可等同于拆分行</strong></p>
 <p>实例</p>
-<pre><code class="language-R">data=data.frame(
-  name=c(&quot;王康&quot;),
-  score=c(&quot;这学期还行，下学期努力，吗？&quot;)
-)
-data
-
-data_sep_rows &lt;- data %&gt;% 
-  separate_rows(
-    score,
-    sep=&quot;，&quot;
-  )
-data_sep_rows
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">data</span><span class="o">=</span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="n">name</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;王康&quot;</span><span class="p">),</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="n">score</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;这学期还行，下学期努力，吗？&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">data</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">data_sep_rows</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="nf">separate_rows</span><span class="p">(</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="n">score</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;，&quot;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="n">data_sep_rows</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/20231210221049.png" /></p>
 <h3 id="_20">方形化</h3>
 <p>方形化（Rectangling）是将一个深度嵌套的列表（通常来自 JSON 或 XML）驯服成一个整齐的行和列的数据集。主要通过组合使用以下函数实现</p>
@@ -3184,14 +3182,14 @@ data_sep_rows
 </ul>
 </li>
 </ul>
-<pre><code class="language-R">#方形化代码，打开嵌套结构
-data &lt;- tibble(
-  var_y=dependent2,
-  data=list_2_all,
-  group=names(dependent2)
-) %&gt;% 
-  unnest_longer(var_y)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">#方形化代码，打开嵌套结构</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="n">var_y</span><span class="o">=</span><span class="n">dependent2</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="n">data</span><span class="o">=</span><span class="n">list_2_all</span><span class="p">,</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="n">group</span><span class="o">=</span><span class="nf">names</span><span class="p">(</span><span class="n">dependent2</span><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="nf">unnest_longer</span><span class="p">(</span><span class="n">var_y</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="_21">注意事项</h2>
 <ul>
 <li>做好数据整洁化需要补充的知识说明<ul>

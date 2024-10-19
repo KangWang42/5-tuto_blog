@@ -2753,12 +2753,12 @@
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202401151025593.png" /></p>
 <h3 id="etal">中英双语样式命名：中文用”和“ ”等“；英文用”&amp;“ ”etal“</h3>
 <p><strong>条目语言为en和us生效</strong></p>
-<pre><code>{{ title truncate=&quot;100&quot; }}{{ if language == &quot;en&quot; }} {{ if firstCreator == creators }}{{ firstCreator }}{{ else }} {{ creators join=&quot; &amp; &quot; max=&quot;2&quot; suffix=&quot; et al.&quot; }}{{ endif }}{{ elseif language == &quot;zh&quot; }}{{ if firstCreator == creators }}{{ firstCreator prefix=&quot; &quot; }}{{ else }}{{ creators join=&quot; 和 &quot; max=&quot;2&quot; suffix=&quot; 等&quot; prefix=&quot; &quot; }}{{ endif }}{{ endif }}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{{ title truncate=&quot;100&quot; }}{{ if language == &quot;en&quot; }} {{ if firstCreator == creators }}{{ firstCreator }}{{ else }} {{ creators join=&quot; &amp; &quot; max=&quot;2&quot; suffix=&quot; et al.&quot; }}{{ endif }}{{ elseif language == &quot;zh&quot; }}{{ if firstCreator == creators }}{{ firstCreator prefix=&quot; &quot; }}{{ else }}{{ creators join=&quot; 和 &quot; max=&quot;2&quot; suffix=&quot; 等&quot; prefix=&quot; &quot; }}{{ endif }}{{ endif }}
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202401151038100.png" /></p>
 <h3 id="_10">不同条目类型使用不同命名方式</h3>
-<pre><code>{{ if itemType == &quot;blogPost&quot; }} {{ websiteType }}-{{ title }}-{{ year }}{{ else }}{{ title }}-{{ year }}{{ endif }}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>{{ if itemType == &quot;blogPost&quot; }} {{ websiteType }}-{{ title }}-{{ year }}{{ else }}{{ title }}-{{ year }}{{ endif }}
+</code></pre></div>
 <p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202401151047274.png" /></p>
 
 

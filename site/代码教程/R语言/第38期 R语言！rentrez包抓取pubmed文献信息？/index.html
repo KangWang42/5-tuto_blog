@@ -2694,84 +2694,81 @@
 </li>
 </ul>
 <h3 id="_6">载入包</h3>
-<pre><code class="language-R">install.packages(&quot;rentrez&quot;)
-install.packages(&quot;brcueR&quot;)
-library(bruceR)#包内包含了tidyverse系列包,很方便
-library(rentrez)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;rentrez&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;brcueR&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">bruceR</span><span class="p">)</span><span class="c1">#包内包含了tidyverse系列包,很方便</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">library</span><span class="p">(</span><span class="n">rentrez</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="_7">单主题，确定索引数</h3>
-<pre><code class="language-R"># 设定主题词 ，参考pubmed索引规则
-query_term=(&quot;COVID-19&quot;)
-#设定索引多少文献
-index=1:20
-
-data &lt;- tibble(
-  index=index
-) %&gt;%unnest(index)%&gt;% 
-  rowwise() %&gt;% 
-   mutate(result=entrez_search(db = &quot;pubmed&quot;,term =query_term)$ids[index],
-  ) %&gt;%ungroup() %&gt;% 
-  mutate(summary=entrez_summary(db=&quot;pubmed&quot;,id=result)
-  ) %&gt;%unnest_wider(summary)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 设定主题词 ，参考pubmed索引规则</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">query_term</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;COVID-19&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">#设定索引多少文献</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">20</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="n">index</span><span class="o">=</span><span class="n">index</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">unnest</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nf">rowwise</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">   </span><span class="nf">mutate</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="nf">entrez_search</span><span class="p">(</span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pubmed&quot;</span><span class="p">,</span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="n">query_term</span><span class="p">)</span><span class="o">$</span><span class="n">ids</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="nf">entrez_summary</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s">&quot;pubmed&quot;</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">unnest_wider</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/20231214102214.png" /></p>
 <h3 id="_8">多主题，自定义每一个的索引数</h3>
-<pre><code class="language-R">query_list=list(&quot;COVID-19&quot;,&quot;health&quot;,&quot;cancer&quot;)  #设定主题列表
-index_list=list(1:20,1:18,1:15)                #设定每个主题需要多少论文，如果需要多设置retmax参数
-
-
-data &lt;- tibble(
-  query=query_list,
-  index=index_list
-) %&gt;%unnest(index)%&gt;% 
-  rowwise() %&gt;% 
-   mutate(result=entrez_search(db = &quot;pubmed&quot;,term =query)$ids[index],
-  ) %&gt;%ungroup() %&gt;% 
-  mutate(summary=entrez_summary(db=&quot;pubmed&quot;,id=result)
-  ) %&gt;%unnest_wider(summary) %&gt;% 
-  group_by(query)%&gt;% 
-  nest
-
-data %&gt;% pull(data,query) %&gt;%      #使用bruceR包，将结果快捷导出到excel
-  export(&quot;result.xlsx&quot;)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">query_list</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;COVID-19&quot;</span><span class="p">,</span><span class="s">&quot;health&quot;</span><span class="p">,</span><span class="s">&quot;cancer&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">#设定主题列表</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">index_list</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">18</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">)</span><span class="w">                </span><span class="c1">#设定每个主题需要多少论文，如果需要多设置retmax参数</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="n">query</span><span class="o">=</span><span class="n">query_list</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="n">index</span><span class="o">=</span><span class="n">index_list</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">unnest</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nf">rowwise</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">   </span><span class="nf">mutate</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="nf">entrez_search</span><span class="p">(</span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pubmed&quot;</span><span class="p">,</span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="n">query</span><span class="p">)</span><span class="o">$</span><span class="n">ids</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="nf">entrez_summary</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s">&quot;pubmed&quot;</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">unnest_wider</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="n">nest</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">      </span><span class="c1">#使用bruceR包，将结果快捷导出到excel</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="nf">export</span><span class="p">(</span><span class="s">&quot;result.xlsx&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/4db062e1b3360c5c79cbbb8f0c07c64.png" /></p>
 <h3 id="_9">单主题，检索所有文献。并进行可视化</h3>
-<pre><code class="language-R">
-
-query=&quot;microplastic AND cancer&quot;
-
-index=length(entrez_search(db = &quot;pubmed&quot;,
-                           term =query,
-                           retmax=300)$ids)     #注意retmax是需要自己设定过多最大论文数，可以先试试index最多多少
-
-data_all &lt;- tibble(index=1:index) %&gt;% 
-   mutate(result=entrez_search(db = &quot;pubmed&quot;,term =query,retmax=300)$ids[index],
-  ) %&gt;%ungroup() %&gt;% 
-  mutate(summary=entrez_summary(db=&quot;pubmed&quot;,id=result)
-  ) %&gt;%unnest_wider(summary)
-
-
-#进行优雅的可视化
-data_all%&gt;%select(index,pubdate) %&gt;% 
-  mutate(pubdate=str_sub(pubdate,1,4)) %&gt;% 
-  mutate(pubdate=as.numeric(pubdate)) %&gt;% 
-  group_by(pubdate) %&gt;% 
-  summarise(期刊数=n()) %&gt;% 
-  ungroup() %&gt;% 
-  ggplot(aes(x=pubdate,y=期刊数)) +
-  geom_bar(stat = &quot;identity&quot;,fill=&quot;#2B6B96&quot;)+
-  geom_line(color=&quot;#071BC9&quot;,linewidth=1)+
-  geom_point(color=&quot;#071BC9&quot;,size=4)+
-  theme_classic()+
-  geom_text(aes(y=期刊数+3,label=期刊数))+
-  scale_color_lancet()+
-  labs(x=&quot;年份&quot;,y=&quot;发表数&quot;,title=query) +
-  theme(plot.title = element_text(hjust = 0.5),
-        plot.margin =margin(t = 0, r = 0, b = 0, l = 0, unit = &quot;pt&quot;))+
-  scale_y_continuous(limits = c(0, 60))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">query</span><span class="o">=</span><span class="s">&quot;microplastic AND cancer&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">index</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="nf">entrez_search</span><span class="p">(</span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pubmed&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">                           </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">                           </span><span class="n">retmax</span><span class="o">=</span><span class="m">300</span><span class="p">)</span><span class="o">$</span><span class="n">ids</span><span class="p">)</span><span class="w">     </span><span class="c1">#注意retmax是需要自己设定过多最大论文数，可以先试试index最多多少</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">data_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">   </span><span class="nf">mutate</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="nf">entrez_search</span><span class="p">(</span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pubmed&quot;</span><span class="p">,</span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="n">query</span><span class="p">,</span><span class="n">retmax</span><span class="o">=</span><span class="m">300</span><span class="p">)</span><span class="o">$</span><span class="n">ids</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="nf">entrez_summary</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s">&quot;pubmed&quot;</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="nf">unnest_wider</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1">#进行优雅的可视化</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">data_all</span><span class="o">%&gt;%</span><span class="nf">select</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="n">pubdate</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">pubdate</span><span class="o">=</span><span class="nf">str_sub</span><span class="p">(</span><span class="n">pubdate</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">pubdate</span><span class="o">=</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">pubdate</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">pubdate</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="nf">summarise</span><span class="p">(</span>期刊数<span class="o">=</span><span class="nf">n</span><span class="p">())</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">pubdate</span><span class="p">,</span><span class="n">y</span><span class="o">=</span>期刊数<span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;#2B6B96&quot;</span><span class="p">)</span><span class="o">+</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;#071BC9&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;#071BC9&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">  </span><span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span>期刊数<span class="m">+3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span>期刊数<span class="p">))</span><span class="o">+</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span><span class="nf">scale_color_lancet</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&quot;年份&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">&quot;发表数&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">plot.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">        </span><span class="n">plot.margin</span><span class="w"> </span><span class="o">=</span><span class="nf">margin</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pt&quot;</span><span class="p">))</span><span class="o">+</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">  </span><span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">))</span>
+</code></pre></div>
 <p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/594193e5f577517bba3e94adbe79d98.png" /></p>
 <h2 id="_10">注意事项</h2>
 <p>使用 <code>rentrez</code> 包时的注意事项：</p>
