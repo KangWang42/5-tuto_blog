@@ -18,7 +18,3 @@ article.md-content__inner.md-typeset h2 , article.md-typeset h1{
     display: block;
 }
 
-
-.md-nav__link .md-ellipsis{
-    font-size: 0.9em;
-}
