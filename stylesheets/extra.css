@@ -1,0 +1,24 @@
+
+article h3, article.md-typeset h1, article h2 {
+    color: #425AEF;
+}
+
+article.md-content__inner.md-typeset h2 , article.md-typeset h1{
+    font-weight:600;
+
+    border-left:4px solid #425AEF ;
+    padding-left: 8px;
+}
+
+/* 图片居中 */
+
+.md-typeset img,.md-typeset svg,.md-typeset video{
+    max-width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.md-nav__link .md-ellipsis{
+    font-size: 0.9em;
+}
