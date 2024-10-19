@@ -1,0 +1,4131 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E7%AC%AC38%E6%9C%9F%20R%E8%AF%AD%E8%A8%80%EF%BC%81rentrez%E5%8C%85%E6%8A%93%E5%8F%96pubmed%E6%96%87%E7%8C%AE%E4%BF%A1%E6%81%AF%EF%BC%9F/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC98%E6%9C%9F%20R%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B%20%E7%A7%91%E7%A0%94%E7%BB%98%E5%9B%BE%E9%85%8D%E8%89%B2%E5%B8%B8%E7%94%A8R%E5%8C%85/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
+    
+    
+      
+        <title>第83期 R语言 cowplot包最佳拼图包超详细教程 - 科研学帮帮</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cowplot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="科研学帮帮" class="md-header__button md-logo" aria-label="科研学帮帮" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            科研学帮帮
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第83期 R语言 cowplot包最佳拼图包超详细教程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="科研学帮帮" class="md-nav__button md-logo" aria-label="科研学帮帮" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    科研学帮帮
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Obsidian教程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Obsidian教程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../obsidian%E6%95%99%E7%A8%8B/%E7%AC%AC19%E6%9C%9F%20obsidian%E6%A0%B7%E5%BC%8F%E7%BE%8E%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第19期 obsidian样式美化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../obsidian%E6%95%99%E7%A8%8B/%E7%AC%AC54%E6%9C%9F%20obsidian%E6%9B%B4%E6%96%B0%EF%BC%81obsidian%E5%AE%98%E6%96%B9%E8%A1%A8%E6%A0%BC%E5%A2%9E%E5%BC%BA%E6%9D%A5%E4%BA%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第54期 obsidian更新！obsidian官方表格增强来了
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Zotero教程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Zotero教程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC10%E6%9C%9F%20Zotero-Gpt%E8%81%94%E5%8A%A8%20%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%BE%85%E5%8A%A9%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第10期 Zotero Gpt联动 人工智能辅助论文阅读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC11%E6%9C%9F%20Zotero6%E5%8F%8AZotero7beta%E5%85%A8%E6%96%B9%E4%BD%8D%E6%AF%94%E8%BE%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第11期 Zotero6及Zotero7beta全方位比较
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC12%E6%9C%9F%20zotero%E7%AC%94%E8%AE%B0%E5%88%97%E8%A1%A8%E7%BE%8E%E5%8C%96%EF%BC%88%E9%99%84css%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第12期 zotero笔记列表美化（附css）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC14%E6%9C%9F%20%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%BE%8E%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第14期 列表元素美化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC15%E6%9C%9F%20Python%E5%AE%9E%E7%8E%B0Pubmed%E8%AE%BA%E6%96%87%E4%BF%A1%E6%81%AF%E6%89%B9%E9%87%8F%E6%8A%93%E5%8F%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第15期 Python实现Pubmed论文信息批量抓取
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC16%E6%9C%9F%20R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%A0%B8%E5%BF%83%EF%BC%81%E7%AE%A1%E9%81%93%E7%AC%A6%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第16期 R语言数据处理核心！管道符用法详解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC17%E6%9C%9F%20Zotero%E6%8F%92%E4%BB%B6%E7%BD%91%E5%9D%80%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第17期 Zotero插件网址汇总
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC18%E6%9C%9F%20%E7%B2%BE%E5%8D%8E%EF%BC%81%20zotero%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81bug%E5%8F%8A%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第18期 精华！ zotero使用常见bug及处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC1%E6%9C%9F%20%E6%9C%80%E5%BC%BA%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8Zotero%E5%85%A5%E9%97%A8%E5%8F%8A%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第1期 最强文献管理神器Zotero入门及基本设置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC20%E6%9C%9F%20zotero%E5%88%97%E8%A1%A8%E9%97%B4%E8%B7%9D%E8%B0%83%E6%95%B4%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97%EF%BC%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第20期 zotero列表间距调整详细指南！
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC21%E6%9C%9F%20%E8%B6%85%E5%AE%9E%E7%94%A8%EF%BC%81zotero%E5%BC%95%E7%94%A8%E6%96%87%E7%8C%AE%E8%87%AA%E5%AE%9A%E4%B9%89CSL%E5%85%A8%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第21期 超实用！zotero引用文献自定义CSL全流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC23%E6%9C%9F%20%E5%A6%82%E4%BD%95%E5%B0%86%E9%9D%9E%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E5%88%97%E8%A1%A8%E4%B8%80%E9%94%AE%E5%AF%BC%E5%85%A5zotero/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第23期 如何将非规范参考文献列表一键导入zotero
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC24%E6%9C%9F%20zotero7beta%E7%BB%86%E8%8A%82%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第24期 zotero7beta细节操作汇总
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC25%E6%9C%9F%20%E5%B9%B2%E8%B4%A7%E6%BB%A1%E6%BB%A1%EF%BC%81zotero%E5%9F%BA%E7%A1%80%E6%8F%92%E4%BB%B6%E4%B8%80%E8%A7%88%E5%8F%8A%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第25期 干货满满！zotero基础插件一览及安装
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC26%E6%9C%9F%20%E7%BF%BB%E8%AF%91%E6%8F%92%E4%BB%B6%E6%9C%80%E5%85%A8%E8%AF%A6%E8%A7%A3%EF%BC%8C%E4%BC%98%E5%8C%96%E4%BD%93%E9%AA%8Cmax%EF%BC%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第26期 翻译插件最全详解，优化体验max！
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC27%E6%9C%9F%20python%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%8Cpandas%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB%E5%8F%8A%E5%AE%9E%E4%BE%8B%E5%B1%95%E7%A4%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第27期 python操作（一），pandas数据预处理函数汇总及实例展示
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC28%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81crush%20reference%EF%BC%9Azotero%E8%AE%BA%E6%96%87%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E5%85%A8%E6%8A%93%E5%8F%96%EF%BC%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第28期 插件教程！crush reference：zotero论文参考文献全抓取！
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC2%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%8F%8A%E4%B8%AD%E6%96%87%E6%96%87%E7%8C%AE%E7%9A%84%E6%8A%93%E5%8F%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第2期 软件的下载及中文文献的抓取
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC32%E6%9C%9F%20easier%20citation-%E4%BD%BF%E7%94%A8zotero%E8%BF%9B%E8%A1%8C%E5%BC%95%E6%96%87%E6%8F%92%E5%85%A5%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第32期 easier citation 使用zotero进行引文插入详细教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC33%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%EF%BC%81%20quicker%20%E8%AE%A9zotero%E6%9B%B4%E7%81%B5%E5%8A%A8%EF%BC%8C%E4%BD%A0%E7%9A%84%E6%8C%87%E5%B0%96%E5%B7%A5%E5%85%B7%E7%AE%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第33期 软件推荐！ quicker 让zotero更灵动，你的指尖工具箱
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC34%E6%9C%9F%20%E7%BD%91%E9%A1%B5%E6%8E%A8%E8%8D%90%EF%BC%9A%E8%BF%98%E5%9C%A8%E8%AE%BA%E6%96%87%E5%BC%95%E7%94%A8%E9%87%8C%E6%89%BE%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE%E5%B0%B1out%E5%95%A6%EF%BC%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第34期 网页推荐：还在论文引用里找相关文献就out啦！
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC35%E6%9C%9F%20zotero%E7%AC%94%E8%AE%B0%E5%BC%95%E7%94%A8%E6%83%B9%E4%BA%BA%E6%84%81%EF%BC%8C%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%90%9B%E5%BF%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第35期 zotero笔记引用惹人愁，一行代码解君忧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC37%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero-integration%20zotero%E5%92%8Cobsidian%E5%A6%82%E4%BD%95%E8%81%94%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第37期 插件教程！zotero integration zotero和obsidian如何联动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC39%E6%9C%9F%20zotero7beta%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB%EF%BC%8824-5-24%E5%AE%8C%E5%96%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第39期 zotero7beta插件汇总（24 5 24完善
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC3%E6%9C%9F%20%E7%9F%A5%E7%BD%91%E6%97%A0%E6%B3%95%E6%8A%93%E5%8F%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第3期 知网无法抓取
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC40%E6%9C%9F%20%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90%EF%BC%81%E4%B8%80%E4%B8%AAzotero%E6%8F%92%E4%BB%B6%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BD%91%E7%AB%99%EF%BC%8C%E6%9D%A5%E6%89%BE%E6%89%BE%E4%BD%A0%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第40期 网站推荐！一个zotero插件可视化网站，来找找你用的插件在哪里
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC41%E6%9C%9F%20%20%E7%BD%91%E9%A1%B5%E6%8E%A8%E8%8D%90%EF%BC%81%E4%B8%8D%E8%83%BD%E9%94%99%E8%BF%87%E7%9A%845%E4%B8%AAAI%E8%BE%85%E5%8A%A9%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%BD%91%E7%AB%99/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第41期  网页推荐！不能错过的5个AI辅助论文阅读网站
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC42%E6%9C%9F%20zotero%E6%95%99%E7%A8%8B%EF%BC%81%E4%BD%BF%E7%94%A8%E5%A5%BD%E7%9C%8B%E7%9A%84emoji%E6%80%8E%E4%B9%88%E8%A3%85%E7%82%B9zotero/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第42期 zotero教程！使用好看的emoji怎么装点zotero
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC44%E6%9C%9F%20zotero%E6%95%99%E7%A8%8B%20%E5%91%B5%E6%8A%A4%E7%9C%BC%E7%9D%9B%EF%BC%8Czotero%E7%9A%84%E9%85%8D%E8%89%B2%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第44期 zotero教程 呵护眼睛，zotero的配色如何选择
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC46%E6%9C%9F%20%E7%B2%BE%E5%8D%8E%EF%BC%81zotero%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81bug%E5%8F%8A%E5%A4%84%E7%90%86-2%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第46期 精华！zotero使用常见bug及处理 2（持续更新中）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC46%E6%9C%9F%20%E7%B2%BE%E5%8D%8E%EF%BC%81zotero%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81bug%E5%8F%8A%E5%A4%84%E7%90%86-3%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第46期 精华！zotero使用常见bug及处理 3（持续更新中） 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC47%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero-figure%EF%BC%9A%E4%B8%80%E9%94%AE%E8%8E%B7%E5%8F%96zotero%E8%AE%BA%E6%96%87%E5%9B%BE%E8%A1%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第47期 插件教程！zotero figure：一键获取zotero论文图表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC49%E6%9C%9F%20zotero%E6%95%99%E7%A8%8B%20%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8HTML%E8%AF%AD%E6%B3%95%E4%B8%BA%E6%9D%A1%E7%9B%AE%E6%96%87%E5%AD%97%E6%B7%BB%E5%8A%A0%E6%A0%B7%E5%BC%8F%EF%BC%88%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B%E8%AF%B4%E6%98%8E%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第49期 zotero教程 如何使用HTML语法为条目文字添加样式（代码示例说明）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC50%E6%9C%9F%20zotero%E6%95%99%E7%A8%8B%21%20%E4%BD%BF%E7%94%A8zotero%E6%9D%A5%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第50期 zotero教程! 使用zotero来阅读一本书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC51%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero-better-notes%EF%BC%9Azotero%E7%9A%84%E7%AC%94%E8%AE%B0%E4%BC%98%E5%8C%96%E8%BD%AF%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第51期 插件教程！zotero better notes：zotero的笔记优化软件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC52%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81tara%EF%BC%9Azotero%E7%9A%84%E5%A4%9A%E7%AB%AF%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第52期 插件教程！tara：zotero的多端备份插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC53%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%EF%BC%81zotero%E6%8A%93%E5%8F%96%E7%9F%A5%E7%BD%91%E6%96%87%E7%8C%AE%E5%85%A8%E8%A6%81%E7%B4%A0%E5%8F%8A%E9%94%99%E8%AF%AF%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第53期 软件使用！zotero抓取知网文献全要素及错误分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC55%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E7%9B%AE%E5%89%8Dzotero%E6%9C%80%E9%BB%91%E7%9A%84%E6%8F%92%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第55期 插件教程！目前zotero最黑的插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC56%E6%9C%9F%20%E5%BC%95%E7%94%A8%E6%97%A0%E5%BF%A7%EF%BC%81%E5%A6%82%E4%BD%95%E9%80%89%E5%87%BA%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84gb7714%E5%BC%95%E7%94%A8%E6%A0%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第56期 引用无忧！如何选出自己需要的gb7714引用格式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC57%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero-linter%20%E5%85%B3%E4%BA%8E%E6%9D%A1%E7%9B%AE%E5%85%83%E4%BF%A1%E6%81%AF%E7%9A%84%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第57期 插件教程！zotero linter 关于条目元信息的插件说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC58%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81chartero%21%E6%9C%80%E4%BC%98%E9%9B%85%E7%9A%84zotero%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95%E5%8F%8A%E6%96%87%E7%8C%AE%E5%BA%93%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8F%92%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第58期 插件教程！chartero!最优雅的zotero阅读记录及文献库可视化插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC59%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero-attanger%EF%BC%9A%E9%80%82%E7%94%A8%E4%BA%8Ezotero7%E7%9A%84zotfile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第59期 插件教程！zotero attanger：适用于zotero7的zotfile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC5%E6%9C%9F%20%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BC%81%E7%94%B5%E5%AD%90%E5%9B%BE%E4%B9%A6%E8%B5%84%E6%BA%90%E7%9A%84%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E8%AE%A2%E9%98%85%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90%E5%8F%8A%E6%9C%80%E4%BD%B3%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第5期 全流程！电子图书资源的获取下载订阅相关资源及最佳流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC60%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotcard%EF%BC%9A%E5%83%8F%E5%8D%A1%E7%89%87%E4%B8%80%E6%A0%B7%E7%AE%A1%E7%90%86%E5%92%8C%E7%BB%84%E7%BB%87%E4%BD%A0%E7%9A%84%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第60期 插件教程！zotcard：像卡片一样管理和组织你的笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC61%E6%9C%9F%20%E5%AE%98%E6%96%B9%E6%B4%BB%E5%8A%A8%EF%BC%81zlib%E6%96%B0%E5%B9%B4%E5%A4%A7%E5%8A%A8%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第61期 官方活动！zlib新年大动作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC62%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero-excalidraw%20%EF%BC%9A%E5%9C%A8zotero%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%99%BD%E6%9D%BF%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第62期 插件教程！zotero excalidraw ：在zotero中使用白板功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC63%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%EF%BC%9A25G%E5%85%8D%E8%B4%B9%E9%A2%9D%E5%BA%A6%EF%BC%81InfiniCLOUD%EF%BC%88%E5%8E%9Fteracload%EF%BC%89%E6%9B%BF%E4%BB%A3%E5%9D%9A%E6%9E%9C%E4%BA%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第63期 软件教程！数据同步：25G免费额度！InfiniCLOUD（原teracload）替代坚果云
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC64%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%9B%B4%E6%96%B0%EF%BC%81zotero-style-3.3.5%EF%BC%9Azotero7%E5%AE%9E%E7%8E%B0%E5%85%A8%E6%96%87%E7%BF%BB%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第64期 插件更新！zotero style 3.3.5：zotero7实现全文翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC65%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E5%9C%A8WPS%E4%B8%AD%E5%BC%95%E7%94%A8zotero%E6%96%87%E7%8C%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第65期 软件教程！在WPS中引用zotero文献
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC66%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81Zotero%E6%97%A0%E6%B3%95%E6%8A%93%E5%8F%96ScienceDirect%E7%9A%84%E5%AE%98%E6%96%B9%E8%AF%B4%E6%98%8E%E5%8F%8A%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第66期 软件教程！Zotero无法抓取ScienceDirect的官方说明及处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC68%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81Zotero-Addons%EF%BC%9A%E7%94%A8%E6%8F%92%E4%BB%B6%E6%9D%A5%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第68期 插件教程！Zotero Addons：用插件来管理插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC69%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%20%E5%9C%A8zotero%E9%87%8C%E9%85%8D%E7%BD%AE%E5%AE%89%E5%A8%9C%E5%9B%BE%E4%B9%A6%E9%A6%86%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第69期 软件教程 在zotero里配置安娜图书馆搜索引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC6%E6%9C%9F%20Zotero%E7%AC%94%E8%AE%B0%E6%A0%B7%E5%BC%8F%E7%BE%8E%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第6期 Zotero笔记样式美化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC70%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero7%E5%BC%BA%E5%A4%A7%E7%9A%84%E9%87%8D%E5%91%BD%E5%90%8D%EF%BC%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第70期 插件教程！zotero7强大的重命名，正则表达式自定义实现
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC75%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9zotero%E7%AC%94%E8%AE%B0%E5%AD%97%E4%BD%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第75期 软件教程！如何修改zotero笔记字体
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC76%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E5%AE%9E%E7%94%A8%EF%BC%9A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8noteexpress%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%E7%9F%A5%E7%BD%91%E5%85%A8%E6%96%87%E5%B9%B6%E5%AF%BC%E5%85%A5zotero/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第76期 软件教程！实用：如何使用noteexpress批量获取知网全文并导入zotero
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC77%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%9A%E5%B0%86zotero%E7%89%88%E6%9C%AC%E4%BF%9D%E5%AD%98%E5%9C%A854%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第77期 软件教程：将zotero版本保存在54的注意事项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC80%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E5%9B%BD%E5%86%85%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%B8%AAwebdav%E4%BA%91%E7%9B%98%E6%94%AF%E6%8C%81%EF%BC%812T%E7%A9%BA%E9%97%B4%E4%B8%8D%E9%99%90%E9%80%9F%EF%BC%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第80期 软件教程！国内的第二个webdav云盘支持！2T空间不限速？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC81%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8RSS%E8%AE%A2%E9%98%85%E5%9C%A8zotero%E4%B8%AD%E5%AE%9E%E6%97%B6%E8%BF%BD%E8%B8%AA%E6%9C%80%E6%96%B0%E6%96%87%E7%8C%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第81期 软件教程！如何使用RSS订阅在zotero中实时追踪最新文献
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC82%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81%E7%B2%BE%E5%8D%8E%EF%BC%81%E5%85%AC%E4%BC%97%E5%8F%B7zotero%E6%95%99%E7%A8%8B%E5%85%A8%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第82期 软件教程！精华！公众号zotero教程全汇总
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC87%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%20%E6%9C%80%E5%A5%BD%E7%9A%84%E7%AC%94%E8%AE%B0%E6%8F%92%E4%BB%B6%EF%BC%9Azotero-betternote%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第87期 插件教程 最好的笔记插件：zotero betternote详细教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC88%20%E6%9C%9F%20zotlit%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%9A%E6%9C%80%E4%BC%98zotero-obsidian%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88%EF%BC%88%E6%96%87%E4%B8%AD%E9%99%84%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第88 期 zotlit详细教程：最优zotero obsidian同步方案（文中附模板代码)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC89%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%EF%BC%81zotero%E4%B8%AD%E8%AE%BE%E7%BD%AE%E6%99%BA%E8%83%BD%E6%96%87%E4%BB%B6%E5%A4%B9%E6%B7%BB%E5%8A%A0%E6%9C%80%E6%96%B0%E6%96%87%E7%8C%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第89期 软件教程！zotero中设置智能文件夹添加最新文献
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC8%E6%9C%9F%20Zotero%E7%BE%8E%E5%8C%96%20zotero-style%E8%AE%BE%E7%BD%AE%E4%BF%9D%E5%A7%86%E5%85%A8%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第8期 Zotero美化 zotero style设置保姆全教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC90%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%20%E6%95%B2%E4%B8%80%E4%B8%AA%E5%A5%BD%E7%9C%8B%E7%9A%84better-notes%E7%AC%94%E8%AE%B0%E6%A8%A1%E6%9D%BF%EF%BC%88%E6%96%87%E4%B8%AD%E9%99%84%E4%BB%A3%E7%A0%81%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第90期 软件教程 敲一个好看的better notes笔记模板（文中附代码）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC91%E6%9C%9F%20%E6%8F%92%E4%BB%B6%E6%95%99%E7%A8%8B%20zotero%E6%89%B9%E9%87%8F%E7%AE%A1%E7%90%86%E9%87%8D%E5%A4%8D%E6%9D%A1%E7%9B%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第91期 插件教程 zotero批量管理重复条目
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../zotero%E6%95%99%E7%A8%8B/%E7%AC%AC93%E6%9C%9F%20%E6%88%91%E5%81%9A%E4%BA%86%E4%B8%89%E4%B8%AAzotero%E7%AC%94%E8%AE%B0%E4%B8%BB%E9%A2%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第93期 我做了三个zotero笔记主题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    代码教程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            代码教程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    R语言
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            R语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC30%E6%9C%9F%20R%E8%AF%AD%E8%A8%80-%E5%9F%BA%E4%BA%8Etidyverse%E7%9A%84%E6%95%B4%E6%B4%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第30期 R语言 基于tidyverse的整洁数据处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC31%E6%9C%9F%20R%E8%AF%AD%E8%A8%80%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第31期 R语言正则表达式语法详解及使用场景
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC36%E6%9C%9F%20R%E8%AF%AD%E8%A8%80%EF%BC%81%E6%95%B4%E6%B4%81%E6%95%B0%E6%8D%AE%E5%85%A8%E6%B5%81%E7%A8%8B%E5%B8%B8%E7%94%A8%E5%8C%85%E4%BB%8B%E7%BB%8D%E5%92%8C%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第36期 R语言！整洁数据全流程常用包介绍和汇总
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC38%E6%9C%9F%20R%E8%AF%AD%E8%A8%80%EF%BC%81rentrez%E5%8C%85%E6%8A%93%E5%8F%96pubmed%E6%96%87%E7%8C%AE%E4%BF%A1%E6%81%AF%EF%BC%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第38期 R语言！rentrez包抓取pubmed文献信息？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第83期 R语言 cowplot包最佳拼图包超详细教程
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第83期 R语言 cowplot包最佳拼图包超详细教程
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot粗略介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cowplot粗略介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      主题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      用网格来排版拼接图形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      添加图形文字或图形标注
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot函数展示
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cowplot函数展示">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      图形组合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      绘图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      主题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      获取方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grobs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      输出
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot功能详细展示
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cowplot功能详细展示">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      在网格中拼图
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="在网格中拼图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础用法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      微调绘图网格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌套绘图网格(拼图后再拼图)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      拼图合用标题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      图形合用图例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置主题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设置主题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础使用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据图形类型来选择不同绘图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      分面主题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      空主题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      图形对齐（控制长宽等可对齐）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="图形对齐（控制长宽等可对齐）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      按坐标轴对齐
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      叠加绘图
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="叠加绘图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      添加背景注释（水印也可以）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入图形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      绝对定位
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plotimage" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接绘图(plot)和图片(image)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ggplot2base" class="md-nav__link">
+    <span class="md-ellipsis">
+      混合不同绘图框架的图(如ggplot2和base)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC98%E6%9C%9F%20R%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B%20%E7%A7%91%E7%A0%94%E7%BB%98%E5%9B%BE%E9%85%8D%E8%89%B2%E5%B8%B8%E7%94%A8R%E5%8C%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第98期 R语言教程 科研绘图配色常用R包
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/%E7%AC%AC13%E6%9C%9F%20python%E5%AE%9E%E7%8E%B0%E7%9F%A5%E7%BD%91%E8%AE%BA%E6%96%87%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第13期 python实现知网论文信息获取
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    其它教程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            其它教程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%85%B6%E5%AE%83%E6%95%99%E7%A8%8B/%E7%AC%AC85%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%20%E6%8A%8A%E4%BA%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%88%B0%E6%9C%AC%E5%9C%B0%E6%9C%89%E5%A4%9A%E7%88%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第85期 软件教程 把云盘挂载到本地有多爽
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%85%B6%E5%AE%83%E6%95%99%E7%A8%8B/%E7%AC%AC86%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%20%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E8%B6%85%E5%A5%BD%E7%94%A8%E7%9A%84OCR%E8%BD%AF%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第86期 软件推荐 一个开源超好用的OCR软件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%85%B6%E5%AE%83%E6%95%99%E7%A8%8B/%E7%AC%AC92%E6%9C%9F%20obsidian%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%20components%E6%8F%92%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第92期 obsidian插件推荐 components插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    网页软件
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            网页软件
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC4%E6%9C%9F%20GPT%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95%E5%8F%8A%E5%85%B6%E5%AE%83%E4%BA%8B%E9%A1%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第4期 GPT注册方法及其它事项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC74%E6%9C%9F%20%E5%AE%9E%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%EF%BC%81%E5%85%A8%E6%B5%81%E7%A8%8Bedge%E6%8F%92%E4%BB%B6%E5%8A%A9%E5%8A%9B%E7%A7%91%E7%A0%94%E6%95%88%E7%8E%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第74期 实用浏览器插件！全流程edge插件助力科研效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC78%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%EF%BC%81%E6%8F%90%E9%AB%98%E6%88%91%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E2%85%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第78期 软件推荐！提高我电脑使用体验的软件工具 Ⅰ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC79%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%EF%BC%81%E6%8F%90%E9%AB%98%E6%88%91%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E2%85%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第79期 软件推荐！提高我电脑使用体验的软件工具 Ⅱ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC7%E6%9C%9F%20%E8%AE%BA%E6%96%87%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99%EF%BC%8C%E4%B8%8D%E6%AD%A2scihub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第7期 论文下载网站，不止scihub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC84%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%20%E6%88%91%E4%B8%80%E7%9B%B4%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%20%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87MAX%EF%BC%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第84期 软件教程 我一直使用的第三方资源管理器 工作效率MAX！
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC94%E6%9C%9F%20excel%E7%A7%91%E7%A0%94%E8%AE%AD%E7%BB%83-%E6%96%B9%E6%96%B9%E6%A0%BC%E5%AD%90%E5%AE%9E%E6%88%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第94期 excel科研训练 方方格子实战
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC96%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%20%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%B8%A0%E9%81%93%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%A4%87%E4%BB%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第96期 软件推荐 如何实现多渠道文件同步备份
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BD%91%E9%A1%B5%E8%BD%AF%E4%BB%B6/%E7%AC%AC97%E6%9C%9F%20%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%20%E5%AE%9E%E7%94%A8%E5%9B%BE%E5%BA%8A%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%85%A8%E6%94%BB%E7%95%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第97期 软件推荐 实用图床及使用全攻略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot粗略介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cowplot粗略介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      主题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      用网格来排版拼接图形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      添加图形文字或图形标注
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot函数展示
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cowplot函数展示">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      图形组合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      绘图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      主题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      获取方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grobs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      输出
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cowplot_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cowplot功能详细展示
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cowplot功能详细展示">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      在网格中拼图
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="在网格中拼图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础用法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      微调绘图网格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌套绘图网格(拼图后再拼图)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      拼图合用标题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      图形合用图例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置主题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设置主题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础使用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据图形类型来选择不同绘图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      分面主题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      空主题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      图形对齐（控制长宽等可对齐）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="图形对齐（控制长宽等可对齐）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      按坐标轴对齐
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      叠加绘图
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="叠加绘图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      添加背景注释（水印也可以）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入图形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      绝对定位
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plotimage" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接绘图(plot)和图片(image)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ggplot2base" class="md-nav__link">
+    <span class="md-ellipsis">
+      混合不同绘图框架的图(如ggplot2和base)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>第83期 R语言 cowplot包最佳拼图包超详细教程</h1>
+
+<blockquote>
+<p>第83期 cowplot包进行拼图及注释</p>
+<p>本期介<strong>绍R语言cowplot包的效果和详细教程</strong></p>
+<p>个人觉得是<strong>目前最好的R语言拼图包</strong></p>
+<p>内容主要基于包的<a href="https://wilkelab.org/cowplot/">完全文档的翻译和笔记</a></p>
+<p><strong>第四部分详细功能展示非常详细，有需要的朋友可以先不看，或者找有时间的时候看</strong>。公众号不支持目录跳转，所以导出推文全文为PDF，后台回复“<strong>240329</strong>”获取</p>
+</blockquote>
+<h2 id="cowplot">Cowplot安装</h2>
+<pre><code># 安装CRAN版本
+install.packages(&quot;cowplot&quot;)
+
+
+#安装较新版本 
+remotes::install_github(&quot;wilkelab/cowplot&quot;)
+</code></pre>
+<h2 id="cowplot_1">Cowplot粗略介绍</h2>
+<p>cowplot包提供了各种功能，帮助创建满足出版质量的图形，<strong>例如一套修改主题、对齐图形和将它们排列成复杂的复合图形的函数，以及简化图形注释和混合图形与image的功能</strong>。</p>
+<h4 id="_1">主题</h4>
+<p>cowplot最初是为了提供一个<strong>简单、干净的主题，类似于 ggplot2 的 theme_classic()</strong>。然而，随着软件包功能的增加，这种选择越来越成问题，因此从 1.0 版开始，cowplot 不再改变默认的 ggplot2 主题。</p>
+<p>重要的是，<strong>cowplot 软件包现在提供了一组具有不同功能的互补主题</strong>。不存在一个适用于所有图形的单一主题，建议绘制每幅图时都明确设置一个主题。</p>
+<pre><code># classic cowplot theme
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + 
+  geom_point() +
+  theme_cowplot(12)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291051514.png" /></p>
+<h3 id="_2">用网格来排版拼接图形</h3>
+<p>cowplot 软件包提供了 plot_grid()函数，用于将绘图排列成网格并贴上标签。</p>
+<pre><code>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+  geom_point()
+p2 &lt;- ggplot(mtcars, aes(qsec, mpg)) +
+  geom_point()
+
+plot_grid(p1, p2, labels = c('A', 'B'), label_size = 12)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291053884.png" /></p>
+<p>plot_grid() 最初是为 ggplot2 编写的，但它也支持其他绘图框架，<strong>如 base graphics。</strong></p>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291053159.png" /></p>
+<h3 id="_3">添加图形文字或图形标注</h3>
+<p>plot_grid() 建立在通用绘图层之上，它允许我们以图像的形式捕捉绘图，然后在绘图中或绘图之上绘图</p>
+<pre><code>p &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+  geom_point(size = 1.5, color = &quot;blue&quot;) +
+  theme_cowplot(12)
+
+logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
+
+ggdraw(p) + 
+  draw_image(logo_file, x = 1, y = 1, hjust = 1, vjust = 1, width = 0.13, height = 0.2)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291054276.png" /></p>
+<p>在这里，ggdraw() 会获取绘图的快照，并以全尺寸将其放入一个新的绘图画布中。然后，函数 draw_image() 会在绘图上绘制图像。</p>
+<p>要创建水印，我们可以颠倒顺序，先设置一个空的绘图画布，然后绘制图像，再在上面绘制绘图。</p>
+<pre><code>ggdraw() + 
+  draw_image(logo_file, scale = 0.5) +
+  draw_plot(p)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291055140.png" /></p>
+<h2 id="cowplot_2">Cowplot函数展示</h2>
+<h3 id="_4">图形组合</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>align_margin()</td>
+<td>沿指定边距对齐多个图形</td>
+</tr>
+<tr>
+<td>align_plots()</td>
+<td>垂直和/或水平对齐多个图形</td>
+</tr>
+<tr>
+<td>plot_grid()</td>
+<td>将多个图形排列成网格</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">绘图</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>draw_figure_label()</td>
+<td>为图形添加标签</td>
+</tr>
+<tr>
+<td>draw_grob()</td>
+<td>绘制grob</td>
+</tr>
+<tr>
+<td>draw_image()</td>
+<td>绘制图像</td>
+</tr>
+<tr>
+<td>draw_label()</td>
+<td>绘制文本标签或数学表达式</td>
+</tr>
+<tr>
+<td>draw_line()</td>
+<td>用连接点绘制线条</td>
+</tr>
+<tr>
+<td>draw_plot()</td>
+<td>绘制（子）图形</td>
+</tr>
+<tr>
+<td>draw_plot_label()</td>
+<td>为图形添加标签</td>
+</tr>
+<tr>
+<td>draw_text()</td>
+<td>一次性绘制多个文本字符串</td>
+</tr>
+<tr>
+<td>stamp(), stamp_good(), stamp_bad(), stamp_wrong(), stamp_ugly()</td>
+<td>用标签（如好、坏、错误、丑）标记图形</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">主题</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>theme_cowplot(), theme_half_open()</td>
+<td>创建默认的cowplot主题</td>
+</tr>
+<tr>
+<td>theme_map()</td>
+<td>创建绘制地图的主题</td>
+</tr>
+<tr>
+<td>theme_minimal_grid(), theme_minimal_vgrid(), theme_minimal_hgrid()</td>
+<td>带网格的极简主题</td>
+</tr>
+<tr>
+<td>theme_nothing()</td>
+<td>创建一个完全空白的主题</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">获取方法</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get_legend()</td>
+<td>检索图形的图例</td>
+</tr>
+<tr>
+<td>get_panel(), get_panel_component()</td>
+<td>检索图形的面板或面板的一部分</td>
+</tr>
+<tr>
+<td>get_plot_component(), plot_component_names(), plot_components()</td>
+<td>获取图形组件</td>
+</tr>
+<tr>
+<td>get_title(), get_subtitle()</td>
+<td>获取图形标题</td>
+</tr>
+<tr>
+<td>get_y_axis(), get_x_axis()</td>
+<td>获取图形的轴线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="grobs">Grobs</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gtable_remove_grobs()</td>
+<td>从gtable中移除命名元素</td>
+</tr>
+<tr>
+<td>gtable_squash_cols(), gtable_squash_rows()</td>
+<td>将给定列/行的尺寸设置为0</td>
+</tr>
+<tr>
+<td>as_grob(), as_gtable(), plot_to_gtable()</td>
+<td>将图形或其他图形对象转换为gtable或grob</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">输出</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ggsave2()</td>
+<td>Cowplot对ggsave()的重新实现</td>
+</tr>
+<tr>
+<td>save_plot()</td>
+<td>ggsave()的替代品，对多图形图表支持更好</td>
+</tr>
+<tr>
+<td>png_null_device(), pdf_null_device(), cairo_null_device(), agg_null_device()</td>
+<td>空设备</td>
+</tr>
+<tr>
+<td>set_null_device()</td>
+<td>设置空图形设备</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cowplot_3">Cowplot功能详细展示</h2>
+<h3 id="_9">在网格中拼图</h3>
+<h4 id="_10">基础用法</h4>
+<p>plot_grid() 函数提供了一个简单的界面，用于将图形排列成网格并添加标签。</p>
+<pre><code>library(ggplot2)
+library(cowplot)
+
+p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+  geom_point()
+p2 &lt;- ggplot(mtcars, aes(qsec, mpg)) +
+  geom_point()
+
+plot_grid(p1, p2, labels = c('A', 'B'))
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291102694.png" /></p>
+<p>如果指定标签为 labels = "AUTO" 或 labels = "auto"，则标签将分别以大写或小写自动生成。</p>
+<pre><code>plot_grid(p1, p2, labels = &quot;AUTO&quot;)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291103767.png" /></p>
+<pre><code>plot_grid(p1, p2, labels = &quot;auto&quot;)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291103478.png" /></p>
+<p>默认情况下，绘图不会对齐，但在很多情况下，可以通过对齐选项对齐。</p>
+<pre><code>p3 &lt;- p1 + 
+  # use large, rotated axis tick labels to highlight alignment issues
+  theme(axis.text.x = element_text(size = 14, angle = 90, vjust = 0.5))
+
+# plots are drawn without alignment
+plot_grid(p3, p2, labels = &quot;AUTO&quot;)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291103526.png" /></p>
+<pre><code># plots are drawn with horizontal alignment
+plot_grid(p3, p2, labels = &quot;AUTO&quot;, align = &quot;h&quot;)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291104757.png" /></p>
+<p>如果需要更复杂的绘图排列或其他特殊效果，可能需要在对齐参数之外指定轴参数。</p>
+<p>函数 plot_grid() 可以处理各种不同类型的绘图和图形对象，而不仅仅是 ggplot2 绘图。有关详情，请参阅混合使用不同绘图框架的小节。不过，只有 ggplot2 绘图才支持对齐绘图</p>
+<h4 id="_11">微调绘图网格</h4>
+<p>您可以通过 label_size 选项调整标签大小。默认值为 14，因此数值越大标签越大，数值越小标签越小。</p>
+<pre><code>plot_grid(p1, p2, labels = &quot;AUTO&quot;, label_size = 12)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291105902.png" /></p>
+<p>您还可以调整标签的字体族、字面和颜色。</p>
+<pre><code>plot_grid(
+  p1, p2,
+  labels = &quot;AUTO&quot;, 
+  label_fontfamily = &quot;serif&quot;,
+  label_fontface = &quot;plain&quot;,
+  label_colour = &quot;blue&quot;
+)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291105675.png" /></p>
+<p>标签可以通过 label_x 和 label_y 参数移动，通过 hjust 和 vjust 参数对齐。例如，要将标签置于左下角，可以写入</p>
+<pre><code>plot_grid(
+  p1, p2,
+  labels = &quot;AUTO&quot;,
+  label_size = 12,
+  label_x = 0, label_y = 0,
+  hjust = -0.5, vjust = -0.5
+)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291106137.png" /></p>
+<p>通过向选项 label_x、label_y、hjust 和 vjust 传递调整值向量，可以逐个调整各个标签（示例未显示）。</p>
+<p>可以通过 nrow 和 ncol 指定绘图网格的行数和列数。</p>
+<pre><code># arrange two plots into one column
+plot_grid(
+  p1, p2,
+  labels = &quot;AUTO&quot;, ncol = 1
+)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291106296.png" /></p>
+<p>参数 NULL 可用来表示网格中缺少的图块。请注意，如果开启了自动标注功能，缺失的绘图将被标注。</p>
+<pre><code># the second plot in the first row and the
+# first plot in the second row are missing
+plot_grid(
+  p1, NULL, NULL, p2,
+  labels = &quot;AUTO&quot;, ncol = 2
+)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291107819.png" /></p>
+<p>行和列的相对宽度和高度可以通过 rel_widths 和 rel_heights 参数进行调整。</p>
+<pre><code>plot_grid(p1, p2, labels = &quot;AUTO&quot;, rel_widths = c(1, 2))
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291107539.png" /></p>
+<h4 id="_12">嵌套绘图网格(拼图后再拼图)</h4>
+<p>如果想生成一种非简单网格的图形排列，可以将一个 plot_grid() 图形插入到另一个图形中。</p>
+<pre><code>bottom_row &lt;- plot_grid(p1, p2, labels = c('B', 'C'), label_size = 12)
+p3 &lt;- ggplot(mtcars, aes(x = qsec, y = disp)) + geom_point() + facet_wrap(~gear)
+
+plot_grid(p3, bottom_row, labels = c('A', ''), label_size = 12, ncol = 1)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291108137.png" /></p>
+<p>在这种情况下，对齐可能有点麻烦。不过，通常可以通过显式调用 align_plots()来实现。诀窍在于，首先使用 align_plots() 函数沿左坐标轴垂直对齐顶行图（p3）和第一个底行图（p1）。然后将这些对齐的绘图传递给 plot_grid()。</p>
+<pre><code># first align the top-row plot (p3) with the left-most plot of the
+# bottom row (p1)
+plots &lt;- align_plots(p3, p1, align = 'v', axis = 'l')
+# then build the bottom row
+bottom_row &lt;- plot_grid(plots[[2]], p2, labels = c('B', 'C'), label_size = 12)
+
+# then combine with the top row for final plot
+plot_grid(plots[[1]], bottom_row, labels = c('A', ''), label_size = 12, ncol = 1)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291109202.png" /></p>
+<h4 id="_13">拼图合用标题</h4>
+<p>当我们使用 plot_grid() 组合图形时，可能希望添加一个横跨整个组合图形的标题。虽然 cowplot 中没有特定的函数来实现这种效果，但只需几行代码就能轻松模拟：</p>
+<pre><code># make a plot grid consisting of two panels
+p1 &lt;- ggplot(mtcars, aes(x = disp, y = mpg)) + 
+  geom_point(colour = &quot;blue&quot;) + 
+  theme_half_open(12) + 
+  background_grid(minor = 'none')
+
+p2 &lt;- ggplot(mtcars, aes(x = hp, y = mpg)) + 
+  geom_point(colour = &quot;green&quot;) + 
+  theme_half_open(12) + 
+  background_grid(minor = 'none')
+
+plot_row &lt;- plot_grid(p1, p2)
+
+# now add the title
+title &lt;- ggdraw() + 
+  draw_label(
+    &quot;Miles per gallon decline with displacement and horsepower&quot;,
+    fontface = 'bold',
+    x = 0,
+    hjust = 0
+  ) +
+  theme(
+    # add margin on the left of the drawing canvas,
+    # so title is aligned with left edge of first plot
+    plot.margin = margin(0, 0, 0, 7)
+  )
+plot_grid(
+  title, plot_row,
+  ncol = 1,
+  # rel_heights values control vertical title margins
+  rel_heights = c(0.1, 1)
+)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291111341.png" /></p>
+<p>在最后的 plot_grid 行中，需要适当选择 rel_heights 的值，以便标题周围的边距看起来正确。根据此处选择的值，标题占绘图总高度的 9%（即 0.1/1.1）。</p>
+<h4 id="_14">图形合用图例</h4>
+<p>本小节演示如何绘制带有共享图例的复合图。</p>
+<p>我们首先绘制一排不带图例的三幅图。</p>
+<pre><code>library(ggplot2)
+library(cowplot)
+library(rlang)
+
+# down-sampled diamonds data set
+dsamp &lt;- diamonds[sample(nrow(diamonds), 1000), ]
+
+# function to create plots
+plot_diamonds &lt;- function(xaes) {
+  xaes &lt;- enquo(xaes)
+  ggplot(dsamp, aes(!!xaes, price, color = clarity)) +
+    geom_point() +
+    theme_half_open(12) +
+    # we set the left and right margins to 0 to remove 
+    # unnecessary spacing in the final plot arrangement.
+    theme(plot.margin = margin(6, 0, 6, 0))
+}
+
+# make three plots
+p1 &lt;- plot_diamonds(carat)
+p2 &lt;- plot_diamonds(depth) + ylab(NULL)
+p3 &lt;- plot_diamonds(color) + ylab(NULL)
+
+# arrange the three plots in a single row
+prow &lt;- plot_grid(
+  p1 + theme(legend.position=&quot;none&quot;),
+  p2 + theme(legend.position=&quot;none&quot;),
+  p3 + theme(legend.position=&quot;none&quot;),
+  align = 'vh',
+  labels = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;),
+  hjust = -1,
+  nrow = 1
+)
+prow
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291112770.png" /></p>
+<p>现在我们手动添加图例。我们可以将图例放在绘图的一侧。</p>
+<pre><code># extract the legend from one of the plots
+legend &lt;- get_legend(
+  # create some space to the left of the legend
+  p1 + theme(legend.box.margin = margin(0, 0, 0, 12))
+)
+
+# add the legend to the row we made earlier. Give it one-third of 
+# the width of one plot (via rel_widths).
+plot_grid(prow, legend, rel_widths = c(3, .4))
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291113674.png" /></p>
+<p>我们也可以将图例放在底部。</p>
+<pre><code># extract a legend that is laid out horizontally
+legend_b &lt;- get_legend(
+  p1 + 
+    guides(color = guide_legend(nrow = 1)) +
+    theme(legend.position = &quot;bottom&quot;)
+)
+
+# add the legend underneath the row we made earlier. Give it 10%
+# of the height of one plot (via rel_heights).
+plot_grid(prow, legend_b, ncol = 1, rel_heights = c(1, .1))
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291113072.png" /></p>
+<p>或者把图例放中间</p>
+<pre><code># arrange the three plots in a single row, leaving space between plot B and C
+prow &lt;- plot_grid(
+  p1 + theme(legend.position=&quot;none&quot;),
+  p2 + theme(legend.position=&quot;none&quot;),
+  NULL,
+  p3 + theme(legend.position=&quot;none&quot;),
+  align = 'vh',
+  labels = c(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, &quot;C&quot;),
+  hjust = -1,
+  nrow = 1,
+  rel_widths = c(1, 1, .3, 1)
+)
+
+# now add in the legend
+prow + draw_grob(legend, 2/3.3, 0, .3/3.3, 1)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291114290.png" /></p>
+<p>或者来个复杂的排版看看</p>
+<pre><code># plot 1
+p1 &lt;- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + 
+  geom_point() + 
+  stat_smooth(method = &quot;lm&quot;) +
+  facet_grid(. ~ Species) +
+  theme_half_open(12) +
+  background_grid(major = 'y', minor = &quot;none&quot;) + 
+  panel_border() + 
+  theme(legend.position = &quot;none&quot;)
+
+# plot 2
+p2 &lt;- ggplot(iris, aes(Sepal.Length, fill = Species)) +
+  geom_density(alpha = .7) + 
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_half_open(12) +
+  theme(legend.justification = &quot;top&quot;)
+p2a &lt;- p2 + theme(legend.position = &quot;none&quot;)
+
+# plot 3
+p3 &lt;- ggplot(iris, aes(Sepal.Width, fill = Species)) +
+  geom_density(alpha = .7) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_half_open(12) +
+  theme(legend.position = &quot;none&quot;)
+
+# legend
+legend &lt;- get_legend(p2)
+
+# align all plots vertically
+plots &lt;- align_plots(p1, p2a, p3, align = 'v', axis = 'l')
+
+# put together the bottom row and then everything
+bottom_row &lt;- plot_grid(
+  plots[[2]], plots[[3]], legend,
+  labels = c(&quot;B&quot;, &quot;C&quot;),
+  rel_widths = c(1, 1, .3),
+  nrow = 1
+)
+plot_grid(plots[[1]], bottom_row, labels = c(&quot;A&quot;), ncol = 1)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291115354.png" /></p>
+<h3 id="_15">设置主题</h3>
+<h4 id="_16">基础使用</h4>
+<p>主题 theme_half_open()（或等价主题 theme_cowplot()）提供了一种经典的双轴线、无背景网格的图形外观。该主题适用于大多数类型的图形，但最适合散点图和折线图。</p>
+<pre><code>library(ggplot2)
+library(cowplot)
+
+p &lt;- ggplot(mtcars, aes(disp, mpg)) + geom_point()
+
+p + theme_half_open() # identical to theme_cowplot()
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291118304.png" /></p>
+<p>如果您喜欢背景网格，可以通过标准 ggplot2 主题选项添加。或者，也可以使用 cowplot 函数 background_grid()。这个函数需要放在主题调用之后，因为主题调用会覆盖之前所有的主题设置。</p>
+<pre><code>p +
+  theme_half_open() +
+  background_grid() # always place this after the theme
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291118015.png" /></p>
+<p>如果您喜欢带有网格且不带轴线的极简外观，请使用 theme_minimal_grid()。</p>
+<pre><code>p + theme_minimal_grid()
+</code></pre>
+<p><img alt="" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291119887.png" /></p>
+<p>所有主题都可以进一步自定义。例如，默认字体大小为 14 号，适合 5 到 8 英寸宽的数字。对于较小的数字，您可能需要使用 12 号字体。此外，我们还可以修改 theme_minimal_grid() 中网格线的颜色。</p>
+<pre><code>p +
+  theme_minimal_grid(
+    font_size = 12,
+    color = &quot;grey70&quot;
+  )
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291119646.png" /></p>
+<h4 id="_17">根据图形类型来选择不同绘图</h4>
+<p>在选择绘图主题时，应始终注意它在特定绘图中的作用。例如，如果您正在绘制条形图，theme_half_open() 会因为 ggplot2 的自动轴扩展（即 x 轴线不在 y = 0 处）而生成难看的浮动条形图。</p>
+<pre><code>p &lt;- ggplot(mtcars, aes(factor(cyl))) +
+  geom_bar(fill = &quot;#56B4E9&quot;, alpha = 0.8) +
+  theme_half_open()
+
+stamp_ugly(p)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291121779.png" /></p>
+<p>去除条形图低端和x轴的间距是不是好看很多啦</p>
+<pre><code>p &lt;- ggplot(mtcars, aes(factor(cyl))) +
+  geom_bar(fill = &quot;#56B4E9&quot;, alpha = 0.8) +
+  scale_y_continuous(
+    # don't expand y scale at the lower end
+    expand = expansion(mult = c(0, 0.05))
+  )
+
+p + theme_half_open()
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291121531.png" /></p>
+<p>条形图在背景网格上看起来也很别扭，我建议不要使用条形图。</p>
+<pre><code>stamp_ugly(
+  p + theme_minimal_grid()
+)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291124081.png" /></p>
+<p>您可以使用 theme_minimal_hgrid()，它只会绘制水平网格线。</p>
+<pre><code>p + theme_minimal_hgrid()
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291124386.png" /></p>
+<p>如果使用水平条形图绘制翻转条形图，则可能需要垂直网格线，这可以通过 theme_minimal_vgrid() 获得。</p>
+<pre><code>p +
+  coord_flip() +
+  theme_minimal_vgrid()
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291125829.png" /></p>
+<h4 id="_18">分面主题</h4>
+<p>在分面时需要特别注意。一个主题可能在单个情节中看起来很好，但在分面情节中却效果不佳。举个例子，看看我们使用 theme_half_open() 进行分面时会发生什么。</p>
+<pre><code>p &lt;- ggplot(mtcars, aes(disp, mpg)) +
+  facet_wrap(~factor(cyl)) +
+  geom_point() +
+  theme_half_open(12)
+
+stamp_ugly(p)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291126270.png" /></p>
+<p>由于 ggplot2 不会重复每个面板的 Y 轴线，因此三个面板在视觉上并没有分开。我们可以通过调用标准 ggplot2 主题或使用便捷函数 panel_border()，在每个面板周围绘制边框，从而改善这种情况。与 background_grid()一样，该函数必须放在主题之后。</p>
+<pre><code>p + panel_border()  # always place this after the theme
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291126696.png" /></p>
+<p>在这种特殊情况下，也许同时使用面板边框和背景网格是最好的选择。</p>
+<pre><code>p + 
+  panel_border() +
+  background_grid()
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291127733.png" /></p>
+<h4 id="_19">空主题</h4>
+<p>theme_map() 和 theme_nothing() 这两个主题提供了不带坐标轴的精简主题。 theme_map() 类似于 ggplot2 中的 theme_void()，它保留了绘图标题、副标题、标题和图例，只是删除了坐标轴刻度、线条、标签和网格线。所有设置都与其他 cowplot 主题相匹配，因此您可以将使用 theme_map() 的绘图与其他 cowplot 主题混合使用，而且它们看起来会保持一致。</p>
+<p>为了演示这些主题是如何工作的，以及它们是如何与提供的其他主题交互的，让我们先制作一个包含标题、副标题、标题和图例的标准散点图。</p>
+<pre><code>p &lt;- ggplot(mtcars, aes(disp, mpg, color = wt)) +
+  geom_point() +
+  labs(
+    title = &quot;Fuel efficiency in cars&quot;,
+    subtitle = &quot;Bigger and more powerful cars are less efficient&quot;,
+    caption = &quot;Motor Trend, 1974&quot;
+  )
+
+p + theme_cowplot(12)
+</code></pre>
+<p>如果使用 theme_map()，同样的图看起来如下。</p>
+<pre><code>p + theme_map(12)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291128061.png" /></p>
+<p>请注意，所有被保留的元素在这幅图和上一幅图中看起来都是一样的。</p>
+<p>如果我们使用 theme_nothing() 绘制相同的曲线图，那么除了曲线图面板之外的所有元素都会被移除，包括标题和图例。</p>
+<pre><code>p + theme_nothing()
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291129528.png" /></p>
+<p>ggdraw()和 plot_grid() 使用该主题来绘制外围画布。</p>
+<h3 id="_20">图形对齐（控制长宽等可对齐）</h3>
+<p>在R语言中，有几个包可以用来对齐图形。除了cowplot外，<strong>最广泛使用的包括egg和patchwork</strong>。这些包采用了略有不同的方法来对齐图形，各自的方法有不同的优势和劣势。</p>
+<p>虽然egg和patchwork在对齐和排列图形时采用相同的方式，但<strong>cowplot则独立于图形的排列对齐图形。这使得能够先对齐图形，然后再分别重现它们，甚至可以将它们叠加在一起</strong></p>
+<pre><code>library(ggplot2)
+library(cowplot)
+
+p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+  geom_point()
+p2 &lt;- ggplot(mtcars, aes(disp, hp)) + 
+  geom_point()
+p1
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291013337.png" /></p>
+<pre><code>p2
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291013116.png" /></p>
+<p>哪怕两个绘图的 x 轴相同，但第一个绘图区域的宽度略大于第二个，因为 y 轴标签的长度不同。在文档中，如果两个绘图相互靠近显示，绘图宽度的这些差异可能会影响美观。我们可以通过垂直对齐两个绘图，然后分别绘制它们来解决这个问题。</p>
+<pre><code>aligned &lt;- align_plots(p1, p2, align = &quot;v&quot;)
+ggdraw(aligned[[1]])
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291017000.png" /></p>
+<pre><code>ggdraw(aligned[[2]])
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291017067.png" /></p>
+<p>垂直对齐（align = "v"）是指任何垂直参考线（如左右 y 轴线）在绘图中对齐。相比之下，水平对齐（align = "h"）则是对齐水平参考线。这两种对齐方式可以单独使用（align = "v" 或 align = "h"），也可以组合使用（align = "vh" 或 align = "hv"）。</p>
+<p>如果我们想先对齐再排列图形，可以调用 plot_grid()，并为其提供一个对齐参数。plot_grid() 函数会调用 align_plots() 对齐绘图，然后排列它们。</p>
+<pre><code>plot_grid(p1, p2, ncol = 1, align = &quot;v&quot;)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291018372.png" /></p>
+<h4 id="_21">按坐标轴对齐</h4>
+<p>上述垂直和水平对齐方式会尝试对齐所有绘图中的每个垂直或水平元素。换句话说，坐标轴标题相互对齐，坐标轴刻度相互对齐，绘图面板相互对齐，等等。这种对齐方法只有在所有绘图具有完全相同的元素时才有效。因此，举例来说，如果我们试图将一个有分面的绘图与一个没有分面(facet)的绘图对齐，这种方法就会失败。</p>
+<pre><code>p1 &lt;- ggplot(mtcars, aes(disp, mpg)) + 
+  geom_point() +
+  theme_minimal_grid(14) + 
+  panel_border(color = &quot;black&quot;)
+
+p2 &lt;- ggplot(mtcars, aes(factor(vs))) + 
+  geom_bar() + 
+  facet_wrap(~am) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  theme_minimal_hgrid(12) +
+  panel_border(color = &quot;black&quot;) +
+  theme(strip.background = element_rect(fill = &quot;gray80&quot;))
+
+plot_grid(p1, p2, align = &quot;h&quot;, rel_widths = c(1, 1.3))
+##   Warning: Graphs cannot be horizontally aligned unless the axis parameter is
+##  set. Placing graphs unaligned.
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291022519.png" /></p>
+<p>我们会收到无法对齐绘图的警告，因此绘制的绘图没有对齐。要对齐这些曲线图，我们需要告诉 align_plots() 函数曲线图的哪些部分应该对齐。有两种选择，而且都很有意义。首先，我们可以只对齐底轴（axis = "b"）。</p>
+<pre><code>plot_grid(p1, p2, align = &quot;h&quot;, axis = &quot;b&quot;, rel_widths = c(1, 1.3))
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291023129.png" /></p>
+<p>其次，我们可以同时对齐底部和顶部轴线（axis = "bt"）</p>
+<pre><code>plot_grid(p1, p2, align = &quot;h&quot;, axis = &quot;bt&quot;, rel_widths = c(1, 1.3))
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291024175.png" /></p>
+<p>一般来说，轴参数告诉 align_plots() 函数只对齐特定的轴。它可以理解任意组合的 "t"（顶）、"r"（右）、"b"（底）和 "l"（左）值。</p>
+<p>在第二个例子中，我将展示即使两个绘图包含相同数量的元素，按坐标轴对齐也是非常有用的。请看这两个垂直排列的图，首先显示的是 mpg 数据集中不同类别的汽车数量，其次是每个类别的平均城市 mpg 与该类别汽车数量的散点图。</p>
+<pre><code>library(dplyr)
+library(forcats)
+
+city_mpg &lt;- mpg %&gt;%
+  mutate(class = fct_lump(class, 4, other_level = &quot;other&quot;)) %&gt;%
+  group_by(class) %&gt;%
+  summarize(
+    mean_mpg = mean(cty),
+    count = n()
+  ) %&gt;% mutate(
+    class = fct_reorder(class, count)
+  )
+
+
+p1 &lt;- ggplot(city_mpg, aes(class, count)) + 
+  geom_col() + 
+  ylim(0, 65) + 
+  coord_flip()
+
+p2 &lt;- ggplot(city_mpg, aes(mean_mpg, count)) + 
+  geom_point()
+
+plot_grid(p1, p2, ncol = 1, align = 'v')
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291025988.png" /></p>
+<p>由于第一幅图的 y 轴标签很长，因此第二幅图的 y 轴标题与轴标签相距甚远。这看起来很奇怪。最好将坐标轴标题移近标签。我们可以通过按轴对齐来做到这一点。我这里只对齐左轴。对齐左轴和右轴会产生相同的结果。</p>
+<pre><code>plot_grid(p1, p2, ncol = 1, align = 'v', axis = 'l')
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291027731.png" /></p>
+<p>最后，我将分别绘制两幅图，然后将它们叠加在一起。首先，让我们再次绘制 mpg 数据集中不同级别汽车数量的柱状图。</p>
+<pre><code>city_mpg &lt;- city_mpg %&gt;%
+  mutate(class = fct_reorder(class, -mean_mpg))
+
+p1 &lt;- ggplot(city_mpg, aes(class, count)) +
+  geom_col(fill = &quot;#6297E770&quot;) + 
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05)),
+    position = &quot;right&quot;
+  ) +
+  theme_minimal_hgrid(11, rel_small = 1) +
+  theme(
+    panel.grid.major = element_line(color = &quot;#6297E770&quot;),
+    axis.line.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks = element_blank(),
+    axis.ticks.length = grid::unit(0, &quot;pt&quot;),
+    axis.text.y = element_text(color = &quot;#6297E7&quot;),
+    axis.title.y = element_text(color = &quot;#6297E7&quot;)
+  )
+p1
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291028363.png" /></p>
+<p>现在，让我们用散点图来绘制平均城市英里数与汽车级别的关系。</p>
+<pre><code>p2 &lt;- ggplot(city_mpg, aes(class, mean_mpg)) + 
+  geom_point(size = 3, color = &quot;#D5442D&quot;) + 
+  scale_y_continuous(limits = c(10, 21)) +
+  theme_half_open(11, rel_small = 1) +
+  theme(
+    axis.ticks.y = element_line(color = &quot;#BB2D05&quot;),
+    axis.text.y = element_text(color = &quot;#BB2D05&quot;),
+    axis.title.y = element_text(color = &quot;#BB2D05&quot;),
+    axis.line.y = element_line(color = &quot;#BB2D05&quot;)
+  )
+p2
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291029107.png" /></p>
+<p>现在，我们对齐这两幅图，然后将它们叠加在一起。这样绘制的曲线图具有双轴，通常不鼓励绘制这样的曲线图。我在这里举这个例子只是为了说明，当绘图对齐和绘图放置分开时，我们可以实现哪些类型的效果。</p>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291029182.png" /></p>
+<h3 id="_22">叠加绘图</h3>
+<p>cowplot 软件包提供了一些函数，用于绘图和叠加绘图。通过这些函数，我们可以为图形添加任意注释或背景，将图形置于其他图形内部，以更复杂的布局排列图形，或将来自不同图形系统（ggplot2, grid, lattice, base）的图形组合在一起。该功能建立在 ggplot2 的基础之上，也就是说，生成的图形是 ggplot2 对象，可以像普通 ggplot2 图形一样进行修改、扩展和输出。</p>
+<h4 id="_23">添加背景注释（水印也可以）</h4>
+<p>我们从一些简单的注释开始，例如标签或水印。让我们从 mpg 数据集的基本图开始。</p>
+<pre><code>library(ggplot2)
+library(cowplot)
+
+p &lt;- ggplot(mpg, aes(displ, cty)) +
+  geom_point() +
+  theme_minimal_grid(12)
+
+p
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291035386.png" /></p>
+<p>接下来，我们要给这幅图加上 "draft "的水印。为此，我们通过调用 ggdraw() 将绘图包裹到绘图环境中，然后通过各种 draw_*() 函数添加注释。</p>
+<pre><code>ggdraw(p) + 
+  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291036610.png" /></p>
+<p><strong>ggdraw(p)的作用是捕捉绘图的快照，使绘图有效地转化为图像，然后将图像绘制到新的 ggplot2 画布中，不显示坐标轴或背景网格</strong>。draw_* 函数只是常规几何图形的包装器。因此，在上面的示例中，我们可以使用 geom_text()，而不是 draw_label()。</p>
+<pre><code>ggdraw(p) + 
+  geom_text(
+    data = data.frame(x = 0.5, y = 0.5, label = &quot;Draft&quot;),
+    aes(x, y, label = label),
+    hjust = 0.5, vjust = 0.5, angle = 45, size = 100/.pt,
+    color = &quot;#C0A0A0&quot;,
+    inherit.aes = FALSE
+  )
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291037101.png" /></p>
+<p>不过，请注意调用 geom_text() 时要啰嗦得多。此外，geom_text() 以毫米为单位解释字体大小，因此如果我们想以更传统的点为单位指定字体大小，就需要除以 .pt。相比之下，draw_label() 会为我们执行这种转换，因此我们可以直接以点为单位指定字体大小。</p>
+<p>由于 ggdraw() 建立在 ggplot2 的基础之上，因此我们可以像处理 ggplot2 图形一样处理它的输出。例如，我们可以使用 theme() 函数来更改背景颜色。</p>
+<pre><code>ggdraw(p) + 
+  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+  theme(
+    plot.background = element_rect(fill = &quot;cornsilk&quot;, color = NA)
+  )
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291041905.png" /></p>
+<p>我们还可以通过 ggsave() 以标准方式保存注释图。</p>
+<pre><code>draft &lt;- ggdraw(p) + 
+  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45)
+
+ggsave(&quot;draft.pdf&quot;, draft)
+</code></pre>
+<p>(<strong>不过，cowplot 软件包提供了ggsave()的替代函数 save_plot()，可以更方便地保存大小合适的图，</strong>尤其是在制作复合图时）。详情请参见 save_plot() 文档）。</p>
+<p>通常，我们可能希望注释位于绘图下方而不是上方。我们可以先用 ggdraw() 设置一个空图层，然后添加标注，再用 draw_plot() 添加绘图，这样就可以实现这一效果。</p>
+<pre><code>ggdraw() + 
+  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+  draw_plot(p)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291042517.png" /></p>
+<p>这就要求绘图具有透明背景，而所有 cowplot 主题都符合这一要求。相比之下，ggplot2 主题则不一定如此。例如，如果我们将情节的主题改为 theme_classic()，底层标签就会被主题的白色背景所隐藏。</p>
+<pre><code>ggdraw() + 
+  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+  draw_plot(
+    p + theme_classic()
+  )
+</code></pre>
+<p>cowplot 主题 theme_half_open() 没有这种限制。</p>
+<pre><code>ggdraw() + 
+  draw_label(&quot;Draft&quot;, color = &quot;#C0A0A0&quot;, size = 100, angle = 45) +
+  draw_plot(
+    p + theme_half_open(12)
+  )
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291043607.png" /></p>
+<h4 id="_24">嵌入图形</h4>
+<p>Draw_plot() 函数还允许我们在画布上任意位置放置任意大小的绘图。这对于将子图组合成非简单网格的布局非常有用，例如在较大的图形中绘制插入图。</p>
+<pre><code>inset &lt;- ggplot(mpg, aes(drv)) + 
+  geom_bar(fill = &quot;skyblue2&quot;, alpha = 0.7) + 
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal_hgrid(11)
+
+ggdraw(p + theme_half_open(12)) +
+  draw_plot(inset, .45, .45, .5, .5) +
+  draw_plot_label(
+    c(&quot;A&quot;, &quot;B&quot;),
+    c(0, 0.45),
+    c(1, 0.95),
+    size = 12
+  )
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291044069.png" /></p>
+<p>该功能不仅限于 ggplot2 绘图。它也适用于基本图形。</p>
+<pre><code>inset &lt;- ~{
+  counts &lt;- table(mpg$drv)
+  par(
+    cex = 0.8,
+    mar = c(3, 3, 1, 1),
+    mgp = c(2, 1, 0)
+  )
+  barplot(counts, xlab = &quot;drv&quot;, ylab = &quot;count&quot;)
+}
+
+ggdraw(p + theme_half_open(12)) +
+  draw_plot(inset, .45, .45, .5, .5) +
+  draw_plot_label(
+    c(&quot;A&quot;, &quot;B&quot;),
+    c(0, 0.45),
+    c(1, 0.95),
+    size = 12
+  )
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291045397.png" /></p>
+<h4 id="_25">绝对定位</h4>
+<p><strong>默认情况下，ggdraw() 使用的坐标系统使用的是 x 和 y 坐标从 0 到 1 的相对坐标</strong>。不过，有时我们需要将图形元素放置在绝对单位上，例如距离左边界正好 1 英寸。我们可以通过绘制_grob()函数支持的网格图形系统来实现。例如，下面的代码会生成一个宽度和高度均为 1 英寸的蓝色正方形，它正好位于绘图区域左侧边框 1 英寸处和顶部边框 1 英寸处。</p>
+<pre><code>library(grid)
+rect &lt;- rectGrob(
+  x = unit(1, &quot;in&quot;),
+  y = unit(1, &quot;npc&quot;) - unit(1, &quot;in&quot;),
+  width = unit(1, &quot;in&quot;),
+  height = unit(1, &quot;in&quot;),
+  hjust = 0, vjust = 1,
+  gp = gpar(fill = &quot;skyblue2&quot;, alpha = 0.5)
+)
+
+ggdraw(p) +
+  draw_grob(rect)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291046082.png" /></p>
+<p>如果我们以不同的尺寸重新生成该图，蓝色方块将保持在相同的绝对位置，并保留其绝对尺寸。</p>
+<pre><code>ggdraw(p) +
+  draw_grob(rect)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291047171.png" /></p>
+<h4 id="plotimage">连接绘图(plot)和图片(image)</h4>
+<p>绘图层还通过函数 draw_image()支持图像。该函数需要安装 magick 软件包，可以获取多种不同格式的图像，并将其与绘图相结合。例如，我们可以使用图像作为绘图背景：</p>
+<pre><code>library(magick)
+library(dplyr)
+library(forcats)
+
+img &lt;- system.file(&quot;extdata&quot;, &quot;cow.jpg&quot;, package = &quot;cowplot&quot;) %&gt;%
+  image_read() %&gt;%
+  image_resize(&quot;570x380&quot;) %&gt;%
+  image_colorize(35, &quot;white&quot;)
+
+p &lt;- PASWR::Cows %&gt;%
+  filter(breed != &quot;Canadian&quot;) %&gt;%
+  mutate(breed = fct_reorder(breed, butterfat)) %&gt;%
+  ggplot(aes(butterfat, fill = breed)) +
+  geom_density(alpha = 0.7) +
+  scale_fill_grey() +
+  coord_cartesian(expand = FALSE) +
+  theme_minimal_hgrid(11, color = &quot;grey30&quot;)
+
+ggdraw() + 
+  draw_image(img) + 
+  draw_plot(p)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291048102.png" /></p>
+<p>我们还可以将图像作为logo添加到绘图中。除了使用 hjust 和 vjust 外，我们还使用 halign 和 valign 使图像与右上角平齐。</p>
+<pre><code>logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
+
+ggdraw() + 
+  draw_plot(p) +
+  draw_image(
+    logo_file, x = 1, y = 1, hjust = 1, vjust = 1, halign = 1, valign = 1,
+    width = 0.15
+  )
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291048082.png" /></p>
+<h3 id="ggplot2base">混合不同绘图框架的图(如ggplot2和base)</h3>
+<p>除 ggplot2 对象外，所有将绘图对象作为输入的 cowplot 函数（ggdraw()、draw_plot()、plot_grid()）都可以处理多种不同类型的对象。最重要的是，它们可以处理使用基本 R 图形生成的绘图。不过，只有安装了 gridGraphics 软件包才能使用这一功能。</p>
+<p>作为第一个示例，我们用 ggdraw() 绘制一个基本图形，并用 ggplot2 主题机制设计背景样式</p>
+<pre><code>library(ggplot2)
+library(cowplot)
+
+# define a function that emits the desired plot
+p1 &lt;- function() {
+  par(
+    mar = c(3, 3, 1, 1),
+    mgp = c(2, 1, 0)
+  )
+  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+}
+
+ggdraw(p1) +
+  theme(plot.background = element_rect(fill = &quot;cornsilk&quot;))
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291057784.png" /></p>
+<p>添加一个logo</p>
+<pre><code>logo_file &lt;- system.file(&quot;extdata&quot;, &quot;logo.png&quot;, package = &quot;cowplot&quot;)
+
+ggdraw() + 
+  draw_image(
+    logo_file,
+    x = 1, width = 0.1,
+    hjust = 1, halign = 1, valign = 0
+  ) +
+  draw_plot(p1)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291058527.png" /></p>
+<p>我们还可以在绘图网格中并排绘制基础图形和 ggplot2 图形。</p>
+<pre><code>p2 &lt;- ggplot(data = mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
+plot_grid(p1, p2)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291058080.png" /></p>
+<p>R 基本图可以以函数的形式存储，这些函数可以发出所需的图（如上所示），也可以以记录图的形式存储，还可以使用方便的公式界面。</p>
+<p>要创建记录图形，我们首先要绘制基本图形，然后用 recordPlot() 将其记录下来，最后再用 ggdraw() 绘制。</p>
+<pre><code># create base R plot
+par(mar = c(3, 3, 1, 1), mgp = c(2, 1, 0))
+boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291058405.png" /></p>
+<pre><code># record previous base R plot and then draw through ggdraw()
+p1_recorded &lt;- recordPlot()
+ggdraw(p1_recorded)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291059613.png" /></p>
+<p>我们可以在公式中存储任意复杂的绘图代码，只需将其括入大括号中即可。</p>
+<pre><code># store base R plot as formula
+p1_formula &lt;- ~{
+  par(
+    mar = c(3, 3, 1, 1), 
+    mgp = c(2, 1, 0)
+  )
+  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+}
+ggdraw(p1_formula)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291100494.png" /></p>
+<p>同样支持 lattice graphics 和 grid grobs.</p>
+<pre><code># base R
+p1 &lt;- ~{
+  par(
+    mar = c(3, 3, 1, 1), 
+    mgp = c(2, 1, 0)
+  )
+  boxplot(mpg ~ cyl, xlab = &quot;cyl&quot;, ylab = &quot;mpg&quot;, data = mtcars)
+}
+
+# ggplot2
+p2 &lt;- ggplot(data = mtcars, aes(factor(cyl), mpg)) + geom_boxplot()
+
+# lattice
+library(lattice)
+p3 &lt;- bwplot(~mpg | cyl, data = mtcars)
+
+# elementary grid graphics objects
+library(grid)
+p4 &lt;- circleGrob(r = 0.3, gp = gpar(fill = &quot;skyblue&quot;))
+
+# combine all into one plot
+plot_grid(p1, p2, p3, p4, rel_heights = c(.6, 1), labels = &quot;auto&quot;)
+</code></pre>
+<p><img alt="image.png" src="https://pic-go-42.oss-cn-guangzhou.aliyuncs.com/img/202403291100531.png" /></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
