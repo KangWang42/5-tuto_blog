@@ -7,3 +7,6 @@ hljs_languages:          # 编程语言
   - python
   - r
 
+extra_css:
+  - stylesheets/extra.css
+
