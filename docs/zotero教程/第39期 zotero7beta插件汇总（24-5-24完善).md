@@ -29,31 +29,31 @@ rating:
 
 ### 1 jasminum（中文网页抓取插件，必备）
 
-教程链接：[链接](wk8686.top/zoteroepi2)
+教程链接：[链接](https://https://wk8686.top/archives/zoteroepi2)
 
 网址 **https://github.com/l0o0/jasminum**
 
 ### 2 Zotero style（zotero美化插件，可包含期刊标签）
 
-教程链接；[链接](wk8686.top/zoteroepi6)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi6)
 
 zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero-style**
 
 ### 3 Zotero-gpt（AI辅助文献阅读）
 
-教程链接；[链接](wk8686.top/zoteroepi10)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi10)
 
 网址 **https://github.com/MuiseDestiny/zotero-gpt**
 
 ### 4 Zotero reference（参考文献抓取）
 
-教程链接；[链接](wk8686.top/zoteroepi28)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi28)
 
 网址 **https://github.com/MuiseDestiny/zotero-reference**
 
 ### 5 zotero-citation（引用加强）
 
-教程链接；[链接](wk8686.top/zoteroepi32)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi32)
 
 网址 **https://github.com/MuiseDestiny/zotero-citation**
 
@@ -61,11 +61,11 @@ zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero
 
 网址 **https://github.com/MuiseDestiny/zotero-figure**
 
-教程链接；[链接](wk8686.top/zoteroepi47)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi47)
 
 ### 7 zotero-pdf-translate（翻译插件，必备）
 
-教程链接；[链接](wk8686.top/zoteroepi26)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi26)
 
 网址 **https://github.com/windingwind/zotero-pdf-translate**
 
@@ -77,7 +77,7 @@ zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero
 
 网址 **https://github.com/windingwind/zotero-better-notes**
 
-教程链接；[链接](wk8686.top/zoteroepi87)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi87)
 
 ### 10 zotero-pdf-preview（论文预览插件）
 
@@ -95,7 +95,7 @@ zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero
 
 网址 **https://github.com/argenos/zotero-mdnotes**
 
-教程链接；[链接](wk8686.top/zoteroepi37)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi37)
 
 ### 13 zotero-dark-theme（night更好看）（主题插件）
 
@@ -111,7 +111,7 @@ zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero
 
 网址 **https://github.com/jlegewie/zotfile**
 
-官方不维护了，zottanger功能基本可用延续：教程链接；[链接](wk8686.top/zoteroepi59)
+官方不维护了，zottanger功能基本可用延续：教程链接；[链接](https://wk8686.top/archives/zoteroepi59)
 
 ### 16 zutile（只支持6）
 
@@ -119,7 +119,7 @@ zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero
 
 ### 17 tara（备份插件）
 
-教程链接；[链接](wk8686.top/zoteroepi52)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi52)
 
 网址 **https://github.com/l0o0/tara/releases**
 
@@ -131,7 +131,7 @@ zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero
 
 ### 19 markdb-connect（zotero和obsidian联动插件）
 
-教程链接；[链接](wk8686.top/zoteroepi37)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi37)
 
 网址：daeh/zotero-markdb-connect **https://github.com/daeh/zotero-markdb-connect/releases**
 
@@ -139,7 +139,7 @@ zotero-style: Ethereal Style for Zotero **https://github.com/MuiseDestiny/zotero
 
 教程： **https://zotlit.aidenlx.top/zh-CN**
 
-教程链接；[链接](wk8686.top/zoteroepi88)
+教程链接；[链接](https://wk8686.top/archives/zoteroepi88)
 
 ## 3 付费插件网址（但都挺好用的）
 
